@@ -10,11 +10,15 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 
-const { getRecipes, getRecipesByName, getRecipeById, createRecipe } = require('../controllers/recipeController.js');
+/* const { getRecipes, getRecipesByName, getRecipeById, createRecipe } = require('../controllers/recipeController.js');
 
 router.get('/recipes', getRecipes);
 router.get('/recipes/:idReceta', getRecipeById);
-router.post('/recipe', createRecipe);
+router.post('/recipe', createRecipe); */
+
+
+
+
 
 module.exports = router;
 
