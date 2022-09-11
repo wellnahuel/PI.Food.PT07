@@ -8,15 +8,9 @@ const { API_KEY } = process.env
 //RECIPE_DETAIL= '&addRecipeInformation=true';
 //GET_RECIPE_INFO = '{id}/information';
 //formato ==>  https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&query=apple&number=15
-// url base 
-/* function getRecipes(req, res, next) { 
 
-}
- */
 
-//el nombre viene por query!
-
-//---------- Busco ''TODA'' la data de la API  ------------------------------//
+//-------------------Busco ''TODA'' la data de la API--------------------------//
 
 const getApiData = async() => { //planteo traer 100 porque no puedo traer más
     const recipePromiseApi = axios.get(`
@@ -38,7 +32,7 @@ const getApiData = async() => { //planteo traer 100 porque no puedo traer más
 };
 
 //----------------------------------------------------------------------------------//
-//---------- Traigo la data de la base de datos  -----------------------------------//
+//------------------Traigo la data de la base de datos -----------------------------//
 
 const getDbData = async () => {
     const dataBase = await Recipe.findAll({
@@ -76,7 +70,7 @@ const getAllRecipes = async () => {
 };
 
 //---------------------------------------------------------------------------------//
-//---------- Traer recetas por nombre ---------------------------------------------//
+//---------------------Traer recetas por nombre------------------------------------//
 
 async function getRecipesByName (req, res, next) {
     let name = req.query.name;
@@ -100,7 +94,7 @@ async function getRecipesByName (req, res, next) {
         }
 };
 
-//---------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------//
 
 //-----------------Buscar en la API recetas por ID---------------------------------//
 const getRecipeByIdFromApi = async (id) => {
@@ -139,7 +133,7 @@ const getAllRecipesById = async () => {
 };
 
 //---------------------------------------------------------------------------------//
-//-------------Traer recetas por ID------------------------------------------//
+//-------------------Traer recetas por ID------------------------------------------//
 
 async function getRecipeById(req, res, next) {
     const idRecipe = req.params.id;
