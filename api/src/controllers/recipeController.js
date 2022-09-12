@@ -1,7 +1,7 @@
 const { Recipe, Diet } = require('../db.js');
 const axios = require('axios');
-const { Op } = require('sequelize');
-import { BASE_URL, BASE_NEXT, RECIPE_DETAIL, GET_RECIPE_INFO } from '../../constants.js'
+
+//import { BASE_URL, BASE_NEXT, RECIPE_DETAIL } from '../../constants.js'
 const { API_KEY } = process.env
 //BASE_URL= 'https://api.spoonacular.com/recipes';
 //BASE_NEXT= '/complexSearch';
@@ -9,13 +9,14 @@ const { API_KEY } = process.env
 //GET_RECIPE_INFO = '{id}/information';
 //formato ==>  https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&query=apple&number=15
 
+//${BASE_URL}${BASE_NEXT}?apiKey=${API_KEY}${RECIPE_DETAIL}&number=100 
 
 //-------------------Busco ''TODA'' la data de la API--------------------------//
 
 const getApiData = async() => { //planteo traer 100 porque no puedo traer más
     const recipePromiseApi = axios.get(`
-        ${BASE_URL}${BASE_NEXT}?apiKey=${API_KEY}${RECIPE_DETAIL}&number=100 
-    `) //https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&query=apple&number=15
+    https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&number=100
+    `) 
     const apiData = await recipePromiseApi.data.results.map(datas => {
         return { //aca meto filtrado de lo que viene, que es mucha data no util.
             id: datas.id,
@@ -45,7 +46,7 @@ const getDbData = async () => {
 //----------------------------------------------------------------------------------//
 //---------- Filtro la data de la base de datos (si es que hay algo ahi)  ----------//
 
-const dbFilteredData= await database?.map(datas => {
+const dbFilteredData= await dataBase?.map(datas => {
     return {
         id: datas.id,
         image: datas.image,
