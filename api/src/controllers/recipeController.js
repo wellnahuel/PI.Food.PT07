@@ -14,10 +14,10 @@ const { API_KEY } = process.env
 //-------------------Busco ''TODA'' la data de la API--------------------------//
 
 const getApiData = async() => { //planteo traer 100 porque no puedo traer más
-    const recipePromiseApi = axios.get(`
+    const recipePromiseApi = await axios.get(`
     https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&number=100
     `) 
-    const apiData = await recipePromiseApi.data.results.map(datas => {
+    const apiData = recipePromiseApi.data.results.map(datas => {
         return { //aca meto filtrado de lo que viene, que es mucha data no util.
             id: datas.id,
             image: datas.image,
@@ -80,7 +80,7 @@ async function getRecipesByName (req, res, next) {
         if (name) {
             let recipesByName = await recipesTotal.filter(
                                                             t => t.title.toLowerCase()
-                                                            .includes(title.toLowerCase())
+                                                            .includes(name.toLowerCase())
                                                         )
             if(recipesByName.length) {
                 res.status(200).send(recipesByName)
@@ -99,22 +99,28 @@ async function getRecipesByName (req, res, next) {
 
 //-----------------Buscar en la API recetas por ID---------------------------------//
 const getRecipeByIdFromApi = async (id) => {
+    
+
     const result = await axios.get(
-      `${BASE_URL}/${id}/informtion?apiKey=${API_KEY}${RECIPE_DETAIL}&number=1`
-      //https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=1
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&number=50`
+        //https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=1
+        //`${BASE_URL}/${id}/informtion?apiKey=${API_KEY}${RECIPE_DETAIL}&number=1`
     );
+    //console.log(result)
     const apiDataById = await result.data.results.map(datas => {
         return { //aca meto filtrado de lo que viene, que es mucha data no util.
             id: datas.id,
             image: datas.image,
             title: datas.title,
-            diets: datas.diets?.map(element => element),
+            diets: datas.diets?.map((element) => element),
             summary: datas.summary,
             aggregateLikes: datas.aggregateLikes,
             healthScore: datas.healthScore,  
             steps: datas.analyzedInstructions[0]?.steps.map(s=>s.step).join("")
         };
     });
+    console.log(apiDataById)
+
     return apiDataById
   };
 
@@ -126,9 +132,10 @@ const getRecipeByIdFromApi = async (id) => {
 //------------------------------------------------------------------------------------//
 //-----------Fusiono lo que traje de la API segun ID con lo de la base de datos-------//
 
-const getAllRecipesById = async () => {
+const getAllRecipesById = async (id) => {
     const dbFilteredData = await getDbData();
-    const apiDataById = await getRecipeByIdFromApi();
+    const apiDataById = await getRecipeByIdFromApi(id);
+    console.log(apiDataById)
     const dataById = dbFilteredData.concat(apiDataById);
     return dataById;
 };
@@ -139,7 +146,7 @@ const getAllRecipesById = async () => {
 async function getRecipeById(req, res, next) {
     const idRecipe = req.params.id;
     try {
-        let recipeFound = await getAllRecipesById();
+        let recipeFound = await getAllRecipesById(idRecipe);
         if(idRecipe) {
             let recipeById = recipeFound.filter(rec = rec.id == idRecipe)
             if(recipeById.length) {

@@ -8,7 +8,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/', getRecipesByName);
-router.get('/:idRecipe', getRecipeById);
+router.get('/:id', getRecipeById);
 router.post('/', createRecipe); 
 
 
