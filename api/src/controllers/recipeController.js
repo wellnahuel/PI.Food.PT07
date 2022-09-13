@@ -15,7 +15,7 @@ const { API_KEY } = process.env
 
 const getApiData = async() => { //planteo traer 100 porque no puedo traer más
     const recipePromiseApi = await axios.get(`
-    https://api.spoonacular.com/recipes/complexSearch?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&number=100
+    https://api.spoonacular.com/recipes/complexSearch?apiKey=dbd810b672394bb88e01d24ef098e0ff&addRecipeInformation=true&number=100
     `) 
     const apiData = recipePromiseApi.data.results.map(datas => {
         return { //aca meto filtrado de lo que viene, que es mucha data no util.
@@ -97,96 +97,67 @@ async function getRecipesByName (req, res, next) {
 
 //-------------------------------------------------------------------------------//
 
-//-----------------Buscar en la API recetas por ID---------------------------------//
-const getRecipeByIdFromApi = async (id) => {
-    
-
-    const result = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=331724e7d8284060a4360d44591cf676&addRecipeInformation=true&number=50`
-        //https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=1
-        //`${BASE_URL}/${id}/informtion?apiKey=${API_KEY}${RECIPE_DETAIL}&number=1`
-    );
-    //console.log(result)
-    const apiDataById = await result.data.results.map(datas => {
-        return { //aca meto filtrado de lo que viene, que es mucha data no util.
-            id: datas.id,
-            image: datas.image,
-            title: datas.title,
-            diets: datas.diets?.map((element) => element),
-            summary: datas.summary,
-            aggregateLikes: datas.aggregateLikes,
-            healthScore: datas.healthScore,  
-            steps: datas.analyzedInstructions[0]?.steps.map(s=>s.step).join("")
-        };
-    });
-    console.log(apiDataById)
-
-    return apiDataById
-  };
-
-/* const getByIdFromApi = async (id) => {
-    const recipeByIdFound = await getRecipeByIdFromApi(id);
-    return recipeByIdFound;
-}; */
-
-//------------------------------------------------------------------------------------//
-//-----------Fusiono lo que traje de la API segun ID con lo de la base de datos-------//
-
-const getAllRecipesById = async (id) => {
-    const dbFilteredData = await getDbData();
-    const apiDataById = await getRecipeByIdFromApi(id);
-    console.log(apiDataById)
-    const dataById = dbFilteredData.concat(apiDataById);
-    return dataById;
-};
-
-//---------------------------------------------------------------------------------//
-//-------------------Traer recetas por ID------------------------------------------//
-
-async function getRecipeById(req, res, next) {
-    const idRecipe = req.params.id;
-    try {
-        let recipeFound = await getAllRecipesById(idRecipe);
-        if(idRecipe) {
-            let recipeById = recipeFound.filter(rec = rec.id == idRecipe)
-            if(recipeById.length) {
-                res.status(200).send(recipesById)
-            } else if(!recipeById.length) {
-                res.status(404).send('Not found')
-            } else {
-                res.status(200).send(recipesTotal)
-            }
-        }
-    } catch(err) {
-            next(err)
-        }
-};
-
-//---------------------------------------------------------------------------//
+function getRecipeById(req, res, next) {
+	const id = req.params.idRecipe;
+	if (id.includes('-')) { //si el id tiene un '-' es porque es UUID , ergo esta en la DB, magia de Lau 
+		Recipe.findByPk(id, { include: Diet }).then((resp) => {
+			return res.json(resp);
+		});
+	} else { // si no esta en la DB me voy a buscar a la API (aca use tu magia Fran)
+		axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=dbd810b672394bb88e01d24ef098e0ff`)
+		  .then((response) => {
+				return res.json({
+					title: response.data.title,
+					image: response.data.image,
+					dishTypes: response.data.dishTypes,
+					diets: response.data.diets,
+					summary: response.data.summary,
+					score: response.data.spoonacularScore,
+					healthScore: response.data.healthScore,
+					instructions: response.data.instructions,
+				});
+			})
+			.catch((error) => next(error));
+	}
+}
+  
 
 //----------------Crear Receta -----------------------------------------------//
 
 async function createRecipe(req, res, next) {
-    const { title, summary, image, dishTypes,
-            aggregateLikes, healthScore, steps, diets 
-        } = req.body
-    const recipeCreated = await Recipe.create({
+    let {
         title,
         summary,
-        image,    
         aggregateLikes,
-        dishTypes,
         healthScore,
-        steps
-    });
+        analyzedInstructions,
+        image,
+        diets,
+      } = req.body;
 
-diets.forEach(async element => {
-    let dietDb = await Diet?.findOne({ where: {name: element} })
-    recipeCreated.addDiet(dietDb)
+      try {
+        if (!title || !summary) {
+          return res.json(
+            "You must enter a title and a summary to create a recipe"
+          );
+        }
+        let recipeCreated = await Recipe.create({
+          title,
+          summary,
+          aggregateLikes,
+          healthScore,
+          analyzedInstructions,
+          image,
+        });
     
-});
-    res.json(recipeCreated)
-};
+        let dietDb = await Diet.findAll({ where: { name: diets } });
+        await recipeCreated.addDiet(dietDb);
+    
+        res.send("Recipe created");
+      } catch (err) {
+        res.json({ err });
+      }
+    };
 
 
 //-----------------------------------------------------------------------------//
@@ -200,4 +171,5 @@ module.exports = {
     getRecipeById,
     createRecipe,
 };
+
 
