@@ -1,7 +1,5 @@
 const { Router } = require('express');
 const { getRecipesByName, getRecipeById, createRecipe }  = require('../controllers/recipeController.js');
-
-
 const router = Router();
 
 // Configurar los routers
@@ -10,9 +8,6 @@ const router = Router();
 router.get('/', getRecipesByName);
 router.get('/:idRecipe', getRecipeById);
 router.post('/', createRecipe); 
-
-
-
 
 module.exports = router;
 

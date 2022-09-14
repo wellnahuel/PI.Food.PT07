@@ -89,6 +89,8 @@ async function getRecipesByName (req, res, next) {
             } else {
                 res.status(200).send(recipesTotal)
             }
+        } else {
+            res.status(200).send(recipesTotal)
         }
     } catch(err) {
             next(err)

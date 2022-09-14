@@ -1,10 +1,44 @@
+import React from 'react';
 import './App.css';
+import { Route } from 'react-router-dom';
+import Landing from './components/Landing/Landing.jsx';
+import Home from './components/Home/Home.jsx';
+import Details from './components/Details/Details.jsx';
+import SearchBar from './components/Searchbar/SearchBar.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Form from './components/Form/Form';
+import About from './components/About/About';
+
+import { Switch } from 'react-router'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
+
+    <React.Fragment>
+      <Navbar />
+      <Switch>
+        <Route exact path='/'>
+          <Landing />
+        </Route>
+        <Route exact path='/recipes'>
+          <SearchBar />
+          <Home />
+        </Route>
+        <Route exact path='/recipes:id'>
+          <Details />
+        </Route>
+        <Route exact path='/create'>
+          <Form />
+        </Route>
+        <Route exact path='/about'>
+          <About />
+        </Route>
+
+      </Switch>
+    </React.Fragment>
+
   );
 }
 
