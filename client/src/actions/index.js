@@ -7,20 +7,37 @@ export const GET_DIETS = 'GET_DIETS';
 
 const URL_LOCAL = 'http://localhost:3001';
 
-   export function fetchRecipes() {
-    return function(dispatch) {
-        axios.get(`${URL_LOCAL}/recipes`)
-        .then((recipes) => { //pido las recetas a mi backend 
-            dispatch({
-                type: GET_RECIPES, //dispacho ESTO
-                payload: recipes.data //le puse el .data para sacarselo al reducer
+    export function fetchRecipes() {
+        return function(dispatch) {
+            axios.get(`${URL_LOCAL}/recipes`)
+            .then((recipes) => { //pido las recetas a mi backend 
+                dispatch({
+                    type: GET_RECIPES, //dispacho ESTO
+                    payload: recipes.data //le puse el .data para sacarselo al reducer
+                })
             })
-        })
-        .catch((err) => { //
-            console.log(err)
-        })
-    }
-} 
+            .catch((err) => { //
+                console.log(err)
+            })
+        }
+    } 
+
+    export function searchRecipes(search) {
+        return function(dispatch) {
+            axios.get(`${URL_LOCAL}/recipes`)
+            .then((recipes) => { //pido las recetas a mi backend 
+                dispatch({
+                    type: GET_RECIPES, //dispacho ESTO
+                    payload: recipes.data //le puse el .data para sacarselo al reducer
+                })
+            })
+            .catch((err) => { //
+                console.log(err)
+            })
+        }
+    } 
+
+
 
 
 

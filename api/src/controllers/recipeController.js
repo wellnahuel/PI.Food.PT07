@@ -32,6 +32,8 @@ const getApiData = async() => { //planteo traer 100 porque no puedo traer más
     return apiData;    
 };
 
+
+
 //----------------------------------------------------------------------------------//
 //------------------Traigo la data de la base de datos -----------------------------//
 
