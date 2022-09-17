@@ -15,7 +15,7 @@ const { API_KEY } = process.env
 
 const getApiData = async() => { //planteo traer 100 porque no puedo traer más
     const recipePromiseApi = await axios.get(`
-    https://api.spoonacular.com/recipes/complexSearch?apiKey=dbd810b672394bb88e01d24ef098e0ff&addRecipeInformation=true&number=100
+    https://api.spoonacular.com/recipes/complexSearch?apiKey=b1d326b95121455f9ff08ca199046e1d&addRecipeInformation=true&number=10
     `) 
     const apiData = recipePromiseApi.data.results.map(datas => {
         return { //aca meto filtrado de lo que viene, que es mucha data no util.
@@ -106,7 +106,7 @@ function getRecipeById(req, res, next) {
 			return res.json(resp);
 		});
 	} else { // si no esta en la DB me voy a buscar a la API (aca use tu magia Fran)
-		axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=dbd810b672394bb88e01d24ef098e0ff`)
+		axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=b1d326b95121455f9ff08ca199046e1d`)
 		  .then((response) => {
 				return res.json({
 					title: response.data.title,
