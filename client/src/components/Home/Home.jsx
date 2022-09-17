@@ -16,7 +16,7 @@ export default function Home() {
     return <div>
         {recipes.map((recipe) => {
             console.log(recipe.title)
-            return <Recipe title={recipe.title} image={recipe.image} id={recipe.id} />
+            return <Recipe title={recipe.title} image={recipe.image} diets={recipe.diets}/>
         })}
     </div>
 }
