@@ -5,7 +5,7 @@ import Recipe from '../Recipe/Recipe';
 
 export default function Home() {
 
-    let recipes = useSelector((state) => state.recipes)//recipes es una array
+    let recipes = useSelector((state) => state.filteredRecipes)//recipes es una array
     console.log(recipes)
     let dispatch = useDispatch()
     useEffect(() => {

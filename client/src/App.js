@@ -26,7 +26,7 @@ function App() {
         </Route>
         <Route exact path='/recipes'>
           <SearchBar />
-         {/*  <Order /> */}
+          <Order />
           <Home />
         </Route>
         <Route exact path='/recipes:id'>
