@@ -4,7 +4,12 @@ export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
 export const GET_DIETS = 'GET_DIETS';
-export const SORT = 'SORT';
+export const ORDER_AZ = 'ORDER_AZ';
+export const ORDER_ZA = 'ORDER_ZA';
+export const ORDER_SCORE_UP = 'ORDER_SCORE_UP';
+export const ORDER_SCORE_DOWN = 'ORDER_SCORE_DOWN';
+export const ORDER_HEALTH_DOWN = 'ORDER_AZ';
+export const ORDER_HEALTH_UP = 'ORDER_AZ';
 
 const URL_LOCAL = 'http://localhost:3001';
 
@@ -38,12 +43,50 @@ const URL_LOCAL = 'http://localhost:3001';
         }
     }
 
-    export function sort(order) {
-        return {
-            type: SORT,
-            payload: order
-        }
+    export function getRecipesById(id) {
+        return (dispatch) => {
+            axios.get(`${URL_LOCAL}/recipes/${id}`)
+            .then((response) => {
+                dispatch({ type: GET_RECIPE_BY_ID, payload: response.data });
+            });
+        };
     }
+
+    export function orderAZ() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_AZ" });
+        };
+      }
+      
+      export function orderZA() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_ZA" });
+        };
+      }
+      
+      export function orderScoreUp() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_SCORE_UP" });
+        };
+      }
+      
+      export function orderScoreDown() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_SCORE_DOWN" });
+        };
+      }
+          
+      export function orderHealthDown() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_HEALTH_DOWN" });
+        };
+      }
+      
+      export function orderHealthUp() {
+        return function (dispatch) {
+          return dispatch({ type: "ORDER_HEALTH_UP" });
+        };
+      }
     
 
 
