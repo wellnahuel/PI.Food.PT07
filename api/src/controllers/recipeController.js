@@ -3,16 +3,16 @@ const axios = require('axios');
 const { API_KEY } = process.env
 const { URL_SPOONACULAR } = 'https://api.spoonacular.com/recipes/'
 
+const hardcoreDataApi = require('./100recipes.json');
+
 
 function getRecipes(req, res, next) {
 	const ingredient = req.query.name;
 	var apiRecipes = [];
 	var dbRecipes = [];
-	if (ingredient) {
-		axios
-			.get(
-				`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${ingredient}&number=100`
-			)
+	return res.json(hardcoreDataApi.results)
+	/* if (ingredient) {
+		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${ingredient}&number=100`)
 			.then((apiResponse) => {
 				apiRecipes = apiResponse.data.results.filter((recipe) => {
 					return recipe.title.toLowerCase().includes(ingredient);
@@ -29,10 +29,7 @@ function getRecipes(req, res, next) {
 			})
 			.catch((err) => next(err));
 	} else {
-		axios
-			.get(
-				`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=25`
-			)
+		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=25`)
 			.then((apiResponse) => {
 				apiRecipes = apiResponse.data.results;
 				return Recipe.findAll({ include: [Diet] });
@@ -41,7 +38,8 @@ function getRecipes(req, res, next) {
 				return res.json([...dbResponse, ...apiRecipes]);
 			})
 			.catch((error) => next(error));
-	}
+	} */
+
 }
 
 
