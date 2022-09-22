@@ -10,6 +10,8 @@ export const ORDER_SCORE_UP = 'ORDER_SCORE_UP';
 export const ORDER_SCORE_DOWN = 'ORDER_SCORE_DOWN';
 export const ORDER_HEALTH_DOWN = 'ORDER_AZ';
 export const ORDER_HEALTH_UP = 'ORDER_AZ';
+export const SORT = 'SORT';
+
 
 const URL_LOCAL = 'http://localhost:3001';
 
@@ -52,42 +54,49 @@ const URL_LOCAL = 'http://localhost:3001';
         };
     }
 
-    export function orderAZ() {
+    export function sort(order) {
+      return {
+          type: SORT,
+          payload: order
+      }
+    }
+
+    /* export function orderAZ() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_AZ" });
+          return dispatch({ type: ORDER_AZ });
         };
       }
       
       export function orderZA() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_ZA" });
+          return dispatch({ type: ORDER_ZA });
         };
       }
       
       export function orderScoreUp() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_SCORE_UP" });
+          return dispatch({ type: ORDER_SCORE_UP });
         };
       }
       
       export function orderScoreDown() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_SCORE_DOWN" });
+          return dispatch({ type: ORDER_SCORE_DOWN });
         };
       }
           
       export function orderHealthDown() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_HEALTH_DOWN" });
+          return dispatch({ type: ORDER_HEALTH_DOWN });
         };
       }
       
       export function orderHealthUp() {
         return function (dispatch) {
-          return dispatch({ type: "ORDER_HEALTH_UP" });
+          return dispatch({ type: ORDER_HEALTH_UP });
         };
       }
-    
+     */
 
 
 
