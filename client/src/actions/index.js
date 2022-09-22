@@ -54,11 +54,35 @@ const URL_LOCAL = 'http://localhost:3001';
         };
     }
 
-    export function sort(order) {
+   /*  export function sort(order) {
       return {
           type: SORT,
           payload: order
       }
+    } */
+
+    export function orderAZ() {
+      return function (dispatch) {
+        return dispatch({ type: "ORDER_AZ" });
+      };
+    }
+    
+    export function orderZA() {
+      return function (dispatch) {
+        return dispatch({ type: "ORDER_ZA" });
+      };
+    }
+
+    export function orderHealthDown() {
+      return function (dispatch) {
+        return dispatch({ type: "ORDER_HEALTH_DOWN" });
+      };
+    }
+    
+    export function orderHealthUp() {
+      return function (dispatch) {
+        return dispatch({ type: "ORDER_HEALTH_UP" });
+      };
     }
 
     /* export function orderAZ() {

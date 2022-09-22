@@ -10,13 +10,24 @@ import { ASCENDENTE, DESCENDENTE,/*  HEALTH_UP, HEALTH_DOWN */} from "../../cons
 export default function Order() {
     const dispatch = useDispatch()
 
-    function onSelectChange(e) {
-      dispatch(sort(e.target.value))  
+    /* function orderedFunction(e) {
+      dispatch(sort(e.target.value))   */
       
-    
-  }
 
-   /*  function orderedFunction(e) {
+      function orderedFunction(e) {
+        if (e.target.value === ASCENDENTE) {
+          dispatch(sort(e.target.value));
+        }
+      
+    }
+    
+    /*  
+   
+   
+   
+   
+   
+        function orderedFunction(e) {
         if (e.target.value === "AZ") {
           dispatch(orderAZ());
         } else if (e.target.value === "ZA") {
@@ -34,7 +45,7 @@ export default function Order() {
 
     return (
         <div>
-          <select name="select" onChange={onSelectChange}>
+          <select name="select" onChange={(e) => orderedFunction(e)}>
             <option value={ASCENDENTE}>ascendente</option>
             <option value={DESCENDENTE}>descendente</option>
             
