@@ -12,6 +12,7 @@ import Order from './components/Order/Order.jsx';
 
 
 import { Switch } from 'react-router'
+import Pagination from './components/Pagination/Pagination';
 
 
 
@@ -27,9 +28,10 @@ function App() {
         <Route exact path='/recipes'>
           <SearchBar />
           <Order />
+          <Pagination />
           <Home />
         </Route>
-        <Route exact path='/recipes:id'>
+        <Route exact path='/recipes/:id'>
           <Details />
         </Route>
         <Route exact path='/create'>
