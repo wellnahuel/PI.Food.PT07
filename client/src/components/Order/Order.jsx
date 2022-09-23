@@ -57,6 +57,21 @@ export default function Order() {
         }
       } */
 
+<<<<<<< HEAD
+=======
+    return (
+        <div>
+          <select name="select" onChange={(e) => orderedFunction(e)}>
+            <option value={ASCENDENTE}>ascendente</option>
+            <option value={DESCENDENTE}>descendente</option>
+            
+          </select>
+         
+          {/* <select name="select" onChange={onSelectChange}>
+            <option value={HEALTH_UP}>Health Up</option>
+            <option value={HEALTH_DOWN}>Health Down</option>
+          </select> */}
+>>>>>>> ba0706546fd98a4334bf5077cc46ca359fcb5810
 
 
 
