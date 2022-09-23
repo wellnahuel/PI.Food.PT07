@@ -56,11 +56,11 @@ function fillDiets() {
 		.catch(error => console.log(error));
 }
 
-function getDiets() {
+function getDiets(req, res) {
 	console.log('hola entre agetdiets')
 	Diet.findAll() //chequeo en la db si hay dietas guardadas
 	.then((response) => {
-		return response
+		return res.send(response)
 	})
 }
 
