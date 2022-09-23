@@ -35,22 +35,36 @@ let listOfDiets = [
 ];
 
 
-async function getDiets(req, res, next) {
+function fillDiets() {
+	console.log('hola entre a filldiets')
     Diet.findAll() //chequeo en la db si hay dietas guardadas
 		.then((response) => { //devuelve una promesa, el findAll a su vez devuelve un array
-			if (response.length>0) { //como es un array reviso la longitud 
-				return res.json(response).status(200); //si hay algo en la db lo muestro
-			} else {
+			if (!response.length) { //como es un array reviso la longitud 
 				Diet.bulkCreate(listOfDiets) //si en la db no hay nada muestro la lista de todos los tipos de dieta
 					.then((response) => {
-						return res.json(response);
+						console.log(response)
+
+						return response;
 					})
-					.catch((error) => next(error));
+					.catch(error => console.log(error)); //si hay algo en la db lo muestro
+			} else {
+				console.log(response)
+				return response;
+				
 			}
 		})
-		.catch((error) => next(error));
+		.catch(error => console.log(error));
+}
+
+function getDiets() {
+	console.log('hola entre agetdiets')
+	Diet.findAll() //chequeo en la db si hay dietas guardadas
+	.then((response) => {
+		return response
+	})
 }
 
 module.exports = {
 	getDiets,
+	fillDiets,
 };    

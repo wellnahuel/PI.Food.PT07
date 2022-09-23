@@ -6,10 +6,10 @@ export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
 export const GET_DIETS = 'GET_DIETS';
 export const ORDER_AZ = 'ORDER_AZ';
 export const ORDER_ZA = 'ORDER_ZA';
-export const ORDER_SCORE_UP = 'ORDER_SCORE_UP';
-export const ORDER_SCORE_DOWN = 'ORDER_SCORE_DOWN';
-export const ORDER_HEALTH_DOWN = 'ORDER_AZ';
-export const ORDER_HEALTH_UP = 'ORDER_AZ';
+//export const ORDER_SCORE_UP = 'ORDER_SCORE_UP';
+//export const ORDER_SCORE_DOWN = 'ORDER_SCORE_DOWN';
+export const ORDER_HEALTH_DOWN = 'ORDER_HEALTH_DOWN';
+export const ORDER_HEALTH_UP = 'ORDER_HEALTH_UP';
 export const SORT = 'SORT';
 
 
@@ -60,6 +60,44 @@ const URL_LOCAL = 'http://localhost:3001';
           payload: order
       }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     /* export function orderAZ() {
         return function (dispatch) {

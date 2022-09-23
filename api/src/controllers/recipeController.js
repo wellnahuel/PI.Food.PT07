@@ -72,19 +72,19 @@ function getRecipeById(req, res, next) {
 
 
 function createRecipe(req, res, next) {
-	const { /* name, */ title, summary, image, score, healthScore, instructions, diets, /* resume */ } = req.body;
+	const { title, summary, image, healthScore, instructions, diets, } = req.body;
 	Recipe.create({
-        //name,
-		title,
+        
+		name:title,
 		image,
-		summary,
-		score: parseFloat(score),
-		healthScore: parseFloat(healthScore),
+		resume:summary,
+		score: parseFloat(healthScore),
 		instructions,
-        //resume
+		diets,
+        
 	})
 		.then((recipeCreated) => {
-			return recipeCreated.setDiets(diets);
+			return recipeCreated.setDiets(diets) ;
 		})
 		.then(newRecipe => {
 			return res.json({
