@@ -9,6 +9,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import Form from './components/Form/Form.jsx';
 import About from './components/About/About.jsx';
 import Order from './components/Order/Order.jsx';
+//import Recipe from './components/Recipe';
 
 
 import { Switch } from 'react-router'
@@ -31,6 +32,11 @@ function App() {
           <Pagination />
           <Home />
         </Route>
+       {/*  <Route exact path='/test'>
+          <SearchBar />
+          <Order />
+          <Recipe />
+        </Route> */}
         <Route exact path='/recipes/:id'>
           <Details />
         </Route>

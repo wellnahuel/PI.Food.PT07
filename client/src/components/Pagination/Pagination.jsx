@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
-
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-   
-
-    return <div>
-    <div className="pagination container">
-        hola soy el paginado
-        
+import React from 'react';
+const Pagination = ({ paginate, recipesPerPage, totalNumberOfRecipes}) => {   
+    const numberOfPage = []
+    let totalDivNine = Math.ceil(totalNumberOfRecipes/recipesPerPage)
+    for(let i =1 ; i <= totalDivNine; i++) {
+        numberOfPage.push(i)
+    }
+    return ( <div>
+        <nav className="pagination container">
+            <ul>
+            {numberOfPage?.map(number => (                
+                    <li key={number} >
+                        <p onClick = {() => paginate(number)}>{number}</p>
+                    </li>                
+                ) 
+            )}                
+            </ul>            
+        </nav>
     </div>
-  </div>
-}
-
+    );
+};
 export default Pagination;
