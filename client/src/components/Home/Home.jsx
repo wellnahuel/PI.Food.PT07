@@ -15,7 +15,7 @@ export default function Home() {
 
     const currentRecipes =  store.recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
     console.log(currentRecipes)
-    function paginate(pageNumber) {
+    const paginate = (pageNumber) => {
       setCurrentPage(pageNumber)
     }
     const totalNumberOfRecipes = store.recipes.length
@@ -49,7 +49,7 @@ export default function Home() {
               </Link>
             )         
         }) : 
-        store.recipes.map((currentRecipes) => {        
+        currentRecipes.map((currentRecipes) => {        
           return (
                 <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
                   <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>

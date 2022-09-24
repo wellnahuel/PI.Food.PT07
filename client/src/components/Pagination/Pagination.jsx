@@ -9,7 +9,7 @@ const Pagination = ({ paginate, recipesPerPage, totalNumberOfRecipes}) => {
     return ( <div>
         <nav className="pagination container">
             <ul>
-            {numberOfPage?.map(number => (                
+            {numberOfPage && numberOfPage.map(number => (                
                     <li key={number} >
                         <p onClick = {() => paginate(number)}>{number}</p>
                     </li>                
