@@ -82,69 +82,59 @@ export default function Form() {
 
         return (
             <div className="form_container__all">
-            <div className="titlePage">
-                <h4>Create your recipe</h4>
+              <div className="titlePage">
+                  <h4>Create your recipe</h4>
+              </div>
+              <form className="form__container" id="formCreate" onSubmit={(e) => handleSubmit(e)}>
+                  <div className="left">
+                  <div className="form__title">
+                      <label>Title</label>
+                      <input name="title" className="form__title__input" type="text" autoComplete="off" onChange={(e) => handleChange(e)}/>
+                      {recipe.errors.title && (
+                      <p>You must enter a valid title for your recipe</p>
+                      )}
+                  </div>
+                  <div className="form__summary">
+                      <p>Summary</p>
+                      <textarea name="summary" className="form__summary__textarea" type="text" autoComplete="off"
+                        onChange={(e) => handleChange(e)}
+                      />
+                   {/*    {recipe.errors.summary && (
+                      
+                      )} */}
+                  </div>
+                  
+                  <div className="form__image">
+                      <p>URL Image</p>
+                      <input name="image" className="form__image--input" placeholder="url" type="text" autoComplete="off"
+                        onChange={(e) => handleChange(e)}
+                      />
+                  </div>
             </div>
-            <form className="form__container" id="formCreate" onSubmit={(e) => handleSubmit(e)}>
-                <div className="left">
-                <div className="form__title">
-                    <label>Title</label>
-                    <input name="title" className="form__title__input" type="text" autoComplete="off" onChange={(e) => handleChange(e)}/>
-                    {recipe.errors.title && (
-                    <p>You must enter a valid title for your recipe</p>
-                    )}
-                </div>
-                <div className="form__summary">
-                    <p>Summary</p>
-                    <textarea
-                    name="summary"
-                    className="form__summary__textarea"
-                    type="text"
-                    autoComplete="off"
-                    onChange={(e) => handleChange(e)}
-                    />
-                    {recipe.errors.summary && (
-                    <p>You must enter a valid summary for your recipe</p>
-                    )}
-                </div>
-                
-                <div className="form__image">
-                    <p>URL Image</p>
-                    <input
-                    name="image"
-                    className="form__image--input"
-                    placeholder="url"
-                    type="text"
-                    autoComplete="off"
-                    onChange={(e) => handleChange(e)}
-                    />
-                </div>
-                </div>
                 <div className="right">
-                <div className="form__diets">
-                    <p className="form__diets__title">Select diet types:</p>
-                    {types.length &&
-                    types.map((type, idx) => {
-                        return (
-                        <div key={idx}>
-                            <p>{type.name}</p>
-                            <p
-                            className="stepButton"
-                            onClick={() => {
-                                addDiet(type.name);
-                            }}
-                            >
-                            Add
-                            </p>
-                        </div>
+                  <div className="form__diets">
+                      <p className="form__diets__title">Select diet types:</p>
+                      {types.length &&
+                      types.map((type, idx) => {
+                          return (
+                          <div key={idx}>
+                              <p>{type.name}</p>
+                              <p
+                                className="stepButton"
+                                onClick={() => {
+                                    addDiet(type.name);
+                                }}
+                              >
+                              Add
+                              </p>
+                  </div>
                         );
                     })}
                 </div>
                        
                 <div className="form__scoreHealth">
                     <p>Health Score</p>
-                    <input
-                    name="healthScore"
+                    <input name="healthScore"
                     className="healthScoreInput"
                     type="number"
                     autoComplete="off"
@@ -167,3 +157,4 @@ export default function Form() {
             </div>
         );
         };
+ 

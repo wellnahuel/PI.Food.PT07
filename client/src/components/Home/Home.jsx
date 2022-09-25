@@ -7,14 +7,20 @@ import Pagination from '../Pagination/Pagination';
 export default function Home() {  
     let store =  useSelector((state) => state)
     const [currentPage, setCurrentPage] = useState(1)
+   // const [recipesToShow, setRecipesToShow] = useState();
     const [recipesPerPage, setRecipesPerPage] = useState(9)
     const indexOfLastRecipe = currentPage * recipesPerPage;
     console.log(indexOfLastRecipe)
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
     console.log(indexOfFirstRecipe)
 
-    const currentRecipes =  store.recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
-    console.log(currentRecipes)
+    function currentRecipesFrula(arr) {
+      let cortado = [...arr]
+      return cortado.slice(indexOfFirstRecipe, indexOfLastRecipe)
+    }
+    
+   // const currentRecipes =  store.recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
+   // console.log(currentRecipes)
     const paginate = (pageNumber) => {
       setCurrentPage(pageNumber)
     }
@@ -35,21 +41,21 @@ export default function Home() {
     return <div>
          <Pagination paginate={paginate} recipesPerPage={recipesPerPage} totalNumberOfRecipes={totalNumberOfRecipes}>
          </Pagination>
-        { store.RecipesByName?.length ?  store.RecipesByName.map((currentRecipes) => {
+        { store.RecipesByName?.length ?  currentRecipesFrula(store.RecipesByName).map((currentRecipes) => {
             return (
               <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
                 <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
 
               </Link>
               )        
-        }) : store.orderedRecipes?.length ? store.orderedRecipes.map((currentRecipes) => {
+        }) : store.orderedRecipes?.length ? currentRecipesFrula(store.orderedRecipes).map((currentRecipes) => {
             return (
               <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
                 <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
               </Link>
             )         
         }) : 
-        currentRecipes.map((currentRecipes) => {        
+        currentRecipesFrula(store.recipes).map((currentRecipes) => {        
           return (
                 <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
                   <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>

@@ -56,7 +56,8 @@ export default function reducer(state = initialState, action) {
 				orderedRecipes: [...orderedRec],
 				RecipesByName: []
 			}
-
+			
+			
 		default:
 			return state
 	}

@@ -25,7 +25,7 @@ function getRecipes(req, res, next) {
 					return recipe.title.toLowerCase().includes(ingredient);
 				});
 				return res.json(
-					[...dbRecipes, ...apiRecipes].slice(0, 9)
+					[...dbRecipes, ...apiRecipes]
 				);
 			})
 			.catch((err) => next(err));
