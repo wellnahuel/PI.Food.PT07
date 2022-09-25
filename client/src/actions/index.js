@@ -11,6 +11,7 @@ export const ORDER_ZA = 'ORDER_ZA';
 export const ORDER_HEALTH_DOWN = 'ORDER_HEALTH_DOWN';
 export const ORDER_HEALTH_UP = 'ORDER_HEALTH_UP';
 export const SORT = 'SORT';
+export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 
 
 const URL_LOCAL = 'http://localhost:3001';
@@ -60,6 +61,26 @@ const URL_LOCAL = 'http://localhost:3001';
           payload: order
       }
     } 
+
+    export function getDiets() {
+      return (dispatch) => {
+        axios.get(`${URL_LOCAL}/diets`)
+        .then((diets) => {
+          dispatch({ type: GET_DIETS, payload: diets.data });
+        });
+      };
+    }
+
+    export function filterRecipesByDiets(payload) {
+      console.log(payload)
+      return {
+        type: FILTER_BY_DIETS,
+        payload
+      }
+    }
+
+
+
 
    /*  export function orderAZ() {
       return function (dispatch) {

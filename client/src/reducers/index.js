@@ -1,5 +1,5 @@
 import {
-	GET_RECIPES, GET_RECIPES_BY_NAME, GET_RECIPE_BY_ID, SORT/* , ORDER_AZ, ORDER_ZA,  ORDER_SCORE_UP, ORDER_SCORE_DOWN,  ORDER_HEALTH_DOWN, ORDER_HEALTH_UP */
+	GET_RECIPES, GET_RECIPES_BY_NAME, GET_RECIPE_BY_ID, SORT, GET_DIETS, FILTER_BY_DIETS/* ORDER_HEALTH_DOWN, ORDER_HEALTH_UP */
 } from '../actions';
 
 /* const ASCENDENTE = 'ascendente';
@@ -12,8 +12,10 @@ const initialState = {
 	recipes: [],
 	RecipesByName: [],
 	recipeById: {},
+	allDiets: [],
 	diets: [],
 	orderedRecipes: [],
+	filteredRecipes: [],
 	flag: "All",
 }
 
@@ -56,7 +58,23 @@ export default function reducer(state = initialState, action) {
 				orderedRecipes: [...orderedRec],
 				RecipesByName: []
 			}
-			
+
+		case GET_DIETS: {
+			return {
+				...state,
+				allDiets: action.payload,
+			};
+		}	
+
+		case FILTER_BY_DIETS: {
+
+			const allRecipes = state.recipes
+			const recipesFilter = action.payload === '' ? allRecipes : allRecipes.filter(element => element.allDiets === action.payload)
+			return {
+				...state,
+				filteredRecipes: recipesFilter
+			} 
+		}	
 			
 		default:
 			return state
