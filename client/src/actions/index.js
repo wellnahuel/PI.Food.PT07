@@ -12,6 +12,7 @@ export const ORDER_HEALTH_DOWN = 'ORDER_HEALTH_DOWN';
 export const ORDER_HEALTH_UP = 'ORDER_HEALTH_UP';
 export const SORT = 'SORT';
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
+export const ORDER = 'ORDER';
 
 
 const URL_LOCAL = 'http://localhost:3001';
@@ -85,6 +86,13 @@ const URL_LOCAL = 'http://localhost:3001';
         return response;
       }
     }
+
+    export function order(order) {
+      return {
+          type: ORDER,
+          payload: order
+      }
+    } 
 
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {sort, filterRecipesByDiets} from '../../actions';
+import {sort, filterRecipesByDiets, order} from '../../actions';
 import { ASCENDENTE, DESCENDENTE,/*  HEALTH_UP, HEALTH_DOWN */} from "../../constantes/sort"
 
 export default function Order() {
@@ -8,8 +8,12 @@ export default function Order() {
 
     const dispatch = useDispatch()
 
-    function onSelectChange(e) {
+    function onSelectChangeSort(e) {
       dispatch(sort(e.target.value))  
+    }
+
+    function onSelectChangeOrder(e) {
+      dispatch(order(e.target.value))  
     }
 
 
@@ -19,24 +23,31 @@ export default function Order() {
 
     return (
         <div>
-          <select name="select" onChange={onSelectChange}>
+          <span>Alphabetical:</span>
+          <select name="select" onChange={onSelectChangeSort}>
             <option value={ASCENDENTE}>ascendente</option>
             <option value={DESCENDENTE}>descendente</option>            
           </select> 
+          
+          <span>Health score:</span>
+          <select name="select" onChange={onSelectChangeOrder}>
+            <option value={ASCENDENTE}>ascendente</option>
+            <option value={DESCENDENTE}>descendente</option>            
+          </select>
 
           <span>Filter By Diet: </span>
             <select className='filter-select' onChange={(e) => handleFilterDiets(e)}>
               <option default value=''>Select a Diet</option>
-                <option value='Gluten free'>Gluten Free</option>
-                <option value='Dairy Free'>Ketogenic</option>
-                <option value='Vegetarian'>Vegetarian</option>
-                <option value='Lacto Vegetarian'>Lacto-Vegetarian</option>
-                <option value='Ovo Vegetarian'>Ovo-Vegetarian</option>
-                <option value='Vegan'>Vegan</option>
-                <option value='Pescatarian'>Pescetarian</option>
-                <option value='Paleolithic'>Paleo</option>
-                <option value='Primal'>Primal</option>
-                <option value='Whole 30'>Whole 30</option>;
+                <option value='gluten free'>Gluten Free</option>
+                <option value='dairy free'>Ketogenic</option>
+                <option value='vegetarian'>Vegetarian</option>
+                <option value='lacto vegetarian'>Lacto-Vegetarian</option>
+                <option value='ovo vegetarian'>Ovo-Vegetarian</option>
+                <option value='vegan'>Vegan</option>
+                <option value='pescatarian'>Pescetarian</option>
+                <option value='paleolithic'>Paleo</option>
+                <option value='primal'>Primal</option>
+                <option value='whole30'>Whole 30</option>;
             </select>      
         </div>
     );

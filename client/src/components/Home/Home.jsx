@@ -53,14 +53,19 @@ export default function Home() {
               <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
                 <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
               </Link>
-            )         
-        }) : 
-        currentRecipesFrula(store.recipes).map((currentRecipes) => {        
+            )   
+        }) : store.filteredRecipes?.length ? currentRecipesFrula(store.filteredRecipes).map((currentRecipes) => {
           return (
-                <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
-                  <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
-                </Link>               
-                ) 
-          })}
-    </div>
+            <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
+              <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
+            </Link>
+           )
+          }): currentRecipesFrula(store.recipes).map((currentRecipes) => {        
+            return (
+              <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
+                <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
+              </Link>               
+              ) 
+            })}
+      </div>
 }
