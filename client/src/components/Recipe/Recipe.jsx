@@ -1,15 +1,13 @@
 export default function Recipe({title, image, diets}) {
-    return (     
-
+    return (
         <div>
-            
             <h3>
                 {title}
             </h3>
             <img src={image} alt='imagen'/>
-            <h5>{diets}</h5>
+            { diets?.map((d) => <h5> {d} </h5> )}             {/*  <h4>{diets}</h4> */}
+            {console.log(diets)}
+            
         </div>
-
     )
-    
 }

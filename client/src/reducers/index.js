@@ -75,6 +75,11 @@ export default function reducer(state = initialState, action) {
 				filteredRecipes: recipesFilter
 			} 
 		}	
+
+		case 'POST_RECIPE':
+			return {
+				...state
+			}
 			
 		default:
 			return state
