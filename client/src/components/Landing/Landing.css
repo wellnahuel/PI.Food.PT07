@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway:wght@100&display=swap');
+
+
+.background-container {
+	display: flex;
+	background-color: #30093a;
+	height: 80vh;
+	justify-content: space-evenly;
+	padding: 3rem 3rem 1rem 3rem;
+}
+
+.left-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.welcome {
+	font-family: 'Satisfy', cursive;	
+	color: #fff;
+	font-size: 0.5em;
+	margin: 0;
+}
+
+.title {
+	font-family: 'Raleway', sans-serif;
+	color: #ffffff;
+	font-size: 4em;
+}
+
+.phrase {
+	font-family: 'Satisfy', cursive;
+	margin-top: 1rem;	
+}
+
+.phrase p {
+	font-family: 'Satisfy', cursive;
+	margin: 0;	
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: 300;
+}
+
+.button-get-in {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 900;
+	background-color: #fff;
+	border-radius: 15px;
+	cursor: pointer;
+	color: #30093a;
+	font-size: 1.2em;
+	width: 11vw;
+	height: 7vh;
+}
+
+.landing-image img {
+	max-height: 75vh;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

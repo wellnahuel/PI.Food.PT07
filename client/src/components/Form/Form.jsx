@@ -76,51 +76,98 @@ export default function Form() {
 
   
   
-        return (
-            <div>
-              <Link className="linkHome" to="/recipes">
-                <button>Home</button>
-              </Link>
-              <h1>Create your recipe</h1>
-              <form onSubmit={(e) => handleSubmit(e)}>            
-                <div>
-                  <label>Title:</label>
-                  <input
-                    type='text'
-                    value={input.title}
-                    name='title'
-                    onChange={(e) => handleChange(e)}
-                />
-                {errors.name && (
-                  <p className="error">{errors.name}</p>
-                )}
-                </div>
-              <div>
-                <label>Resume:</label>
-                <input
-                  type='text'
-                  value={input.resume}
-                  name='resume'
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-              <div>
-                <label>Score:</label>
-                <input
-                  type='text'
-                  value={input.score}
-                  name='score'
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-              <br />
-              <button type="submit">Create Recipe</button>
-              </form>
-            </div>
-           
-        );
+  return (
+      <div>
+        <Link className="linkHome" to="/recipes">
+          <button>Home</button>
+        </Link>
+        <h1>Create your recipe</h1>
+        <form onSubmit={(e) => handleSubmit(e)}>            
+          <div>
+            <label>Title:</label>
+            <input
+              type='text'
+              value={input.title}
+              name='title'
+              onChange={(e) => handleChange(e)}
+          />
+          {errors.name && (
+            <p className="error">{errors.name}</p>
+          )}
+          </div>
+        <div>
+          <label>Resume:</label>
+          <input
+            type='text'
+            value={input.resume}
+            name='resume'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <div>
+          <label>Score:</label>
+          <input
+            type='text'
+            value={input.score}
+            name='score'
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <br />
+        <button type="submit">Create Recipe</button>
+        </form>
+      </div>
+      
+  );
 }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /*   const handleSubmit = async (e) => {
       e.preventDefault();
   

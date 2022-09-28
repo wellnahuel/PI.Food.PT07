@@ -72,16 +72,14 @@ function getRecipeById(req, res, next) {
 
 
 function createRecipe(req, res, next) {
-	const { title, summary, image, healthScore, instructions, diets, } = req.body;
-	Recipe.create({
-        
+	const { title, summary, image, healthScore, instructions, diets } = req.body;
+	Recipe.create({        
 		name:title,
 		image,
 		resume:summary,
 		score: parseFloat(healthScore),
 		instructions,
-		diets,
-        
+		diets,        
 	})
 		.then((recipeCreated) => {
 			return recipeCreated.setDiets(diets) ;
@@ -91,7 +89,12 @@ function createRecipe(req, res, next) {
 				message: 'Recipe created',
 			});
 		})
-		.catch((err) => next(err));
+		
+		.catch((err) => {
+
+			console.log(err, 'sot el err'),
+			next(err)
+		})
 }
 
 module.exports = {

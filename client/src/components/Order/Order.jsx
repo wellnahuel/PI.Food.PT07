@@ -40,14 +40,14 @@ export default function Order() {
               <option default value=''>Select a Diet</option>
                 <option value='gluten free'>Gluten Free</option>
                 <option value='dairy free'>Ketogenic</option>
-                <option value='vegetarian'>Vegetarian</option>
-                <option value='lacto vegetarian'>Lacto-Vegetarian</option>
-                <option value='ovo vegetarian'>Ovo-Vegetarian</option>
+                <option value='lacto ovo vegetarian'>Vegetarian</option>
+                <option value='lacto ovo vegetarian'>Lacto-Vegetarian</option>
+                <option value='lacto ovo vegetarian'>Ovo-Vegetarian</option>
                 <option value='vegan'>Vegan</option>
                 <option value='pescatarian'>Pescetarian</option>
                 <option value='paleolithic'>Paleo</option>
                 <option value='primal'>Primal</option>
-                <option value='whole30'>Whole 30</option>;
+                <option value='whole 30'>Whole 30</option>;
             </select>      
         </div>
     );

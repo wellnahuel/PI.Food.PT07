@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { searchRecipes } from '../../actions/index.js'
 import { useDispatch } from 'react-redux'
+import '../Searchbar/SearchBar.css'
 
 export default function Searchbar() {
 
@@ -16,10 +17,10 @@ export default function Searchbar() {
         setSearch(e.target.value)
     }
 
-    return <div>
-        <form onSubmit={onSubmit}>
-            <input type='text' onChange={onInputChange} placeholder='Search' value={search}/>
-            <input type='submit' value='Search'/>
-        </form>
-    </div>
+    return <div className='searchbar'>
+            <form onSubmit={onSubmit}>
+                <input className='input-search' type='text' onChange={onInputChange} placeholder='What do you want to cook?' value={search}/>
+                <input className='button-search' type='submit' value='Search'/>
+            </form>
+        </div>
 }

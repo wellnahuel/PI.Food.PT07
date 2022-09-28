@@ -1,0 +1,34 @@
+.searchbar{
+    padding-left: 450px;
+    background-color: #30093a;
+
+    /* ver si hay una mejor manera de alinearlo en el centro, align items? ver eso luego */
+}
+
+.input-search {
+    padding: 0 0.5rem;
+    height: 5.5vh;
+	width: 15vw;
+	border-radius: 10px;
+    border-color: #30093a;
+    font-family: 'Raleway', sans-serif;
+    border-width: 1px;
+
+}
+
+.button-search {
+    font-family: 'Raleway', sans-serif;
+	background-color: #b68fd4;
+	border-radius: 10px;
+	cursor: pointer;
+	color: #ffffff;
+	width: 8vw;
+	height: 6vh;
+	margin-left: 1rem;
+    border-width: 1px;
+}
+
+.button-search:hover {
+	background-color: #612797;
+	color: #ebebeb;
+}

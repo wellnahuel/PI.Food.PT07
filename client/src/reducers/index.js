@@ -91,7 +91,9 @@ export default function reducer(state = initialState, action) {
 
 			const allRecipes = state.recipes
 			
-			const recipesFiltered = action.payload === '' ? allRecipes : allRecipes.filter(element => element.diets.includes(action.payload))
+			const recipesFiltered = action.payload === '' ? allRecipes : allRecipes.filter(
+				element => element.diets.includes(action.payload)
+			)
 			/* (element => element.allDiets === action.payload) */
 			return {
 				...state,

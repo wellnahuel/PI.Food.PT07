@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway:wght@100&display=swap');
+
+
+.navbar {
+	background-color: #ffffffff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 10vh;
+}
+
+.nav-left {
+    font-family: 'Raleway', cursive;
+	margin-left: 3rem;
+	font-size: 2rem;
+}
+
+.nav-left a {
+	color: #30093a;
+	text-decoration: none;
+}
+
+.list-item {
+    font-family: 'Raleway', cursive;
+    list-style-type: none;
+    text-decoration: none;
+
+}

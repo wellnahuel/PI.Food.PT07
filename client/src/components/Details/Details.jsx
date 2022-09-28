@@ -29,7 +29,9 @@ export default function Details() {
 						<h4>{recipe.dishTypes}</h4>
 						<h4>{recipe.diets}</h4>
 						<p dangerouslySetInnerHTML={{__html: recipe.summary,}}/>
-						<h4>{recipe.healthScore}</h4>						
+						<h4>{recipe.healthScore}</h4>
+						{/* <p obj.analyzedInstructions[0]?.steps.map(el => el.step)/> */}
+												
 					</> : 
 					<div>loading...</div>
 				}
