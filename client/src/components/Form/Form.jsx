@@ -1,8 +1,9 @@
-//import "./CreateRecipe.css";
+import '../Form/Form.css'
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { postRecipe } from '../../actions';
+import {getDiets} from '../../actions/index.js'
 
 //const axios = require("axios");
 
@@ -21,10 +22,16 @@ function validate(input) {
   }
 
 export default function Form() {
-  //const navigate = useNavigate()
+  const diets = useSelector((state) => state.diets);
   const dispatch = useDispatch()    
+
+  useEffect(() => {
+		dispatch(getDiets());
+	}, [dispatch]);
+
+  //const navigate = useNavigate()
   const [errors, setErrors] = useState({})
-  const typesOfDiets = useSelector((state) => state.diets);
+  //const typesOfDiets = useSelector((state) => state.diets);
 
   const [input, setInput] = useState ({
     title: "",
@@ -77,44 +84,77 @@ export default function Form() {
   
   
   return (
-      <div>
-        <Link className="linkHome" to="/recipes">
-          <button>Home</button>
-        </Link>
-        <h1>Create your recipe</h1>
+      <div className="form-main-container">
+        <h1 className="form-title">Create your recipe</h1>
         <form onSubmit={(e) => handleSubmit(e)}>            
-          <div>
-            <label>Title:</label>
-            <input
-              type='text'
-              value={input.title}
-              name='title'
-              onChange={(e) => handleChange(e)}
-          />
-          {errors.name && (
-            <p className="error">{errors.name}</p>
-          )}
+          <div className="form-main-div">            
+            <div className="form-left-div">
+              <label>Title:</label>
+              <input
+                type='text'
+                value={input.title}
+                name='title'
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && (
+              <p className="error">{errors.name}</p>
+              )}
+              <label>Resume:</label>
+              <textarea
+                type='text'
+                value={input.resume}
+                name='resume'
+                onChange={(e) => handleChange(e)}
+              /> 
+              <label>Score:</label>
+              <input
+                type='text'
+                value={input.score}
+                name='score'
+                onChange={(e) => handleChange(e)}
+              />
+              <label>Instructions:</label>
+              <textarea
+                type='text'
+                value={input.instructions}
+                name='instructions'
+                onChange={(e) => handleChange(e)}
+              />
+            </div>  
+            <div className="form-rigth-div">
+              <div className="form-list-diets">
+                {diets.length > 0 &&
+                    diets.map((diet) => (
+                      <label
+                        htmlFor={diet.id
+                          .toLowerCase()
+                          .replace(' ', '')
+                          .replace('-', '')}
+                      >
+                        <input
+                          key={diet.id}
+                          id={diet.id
+                            .toLowerCase()
+                            .replace(' ', '')
+                            .replace('-', '')}
+                          type='checkbox'
+                          name={diet.name
+                            .toLowerCase()
+                            .replace(' ', '')
+                            .replace('-', '')}
+                          onChange={handleCheck}
+                        />
+                        {diet.name}
+                      </label>
+                    ))}
+              </div>
+            </div>
+         
+        
           </div>
-        <div>
-          <label>Resume:</label>
-          <input
-            type='text'
-            value={input.resume}
-            name='resume'
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Score:</label>
-          <input
-            type='text'
-            value={input.score}
-            name='score'
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <br />
-        <button type="submit">Create Recipe</button>
+          <div className="button-create">
+            <button type="submit">Create Recipe</button>
+          </div>
         </form>
       </div>
       

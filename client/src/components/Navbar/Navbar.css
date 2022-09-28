@@ -28,3 +28,8 @@
 	padding-right: 10px;
 
 }
+
+.list-item a {
+	list-style-type: none;
+    text-decoration: none;
+} 

@@ -1,0 +1,54 @@
+.form-main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #30093a;
+    color: #fff;
+	min-height: 100vh;
+    font-family: 'Raleway', sans-serif;
+
+}
+
+.form-main-div {
+    display: flex;
+}
+
+.form-left-div {
+    display: flex;
+	flex-direction: column;
+	margin: 0 5rem;
+}
+
+.form-rigth-div {   
+    display: flex;
+    flex-direction: column;
+    margin: 0 5rem;   
+}
+
+.form-left-div input {
+	padding: 0 0.5rem;
+	height: 6vh;
+	width: 20vw;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+}
+
+.form-left-div textarea {
+    padding: 1rem 0.5rem;
+	height: 8vh;
+	width: 20vw;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.button-create {
+    display: flex;
+	justify-content: center;
+	top: 2rem;
+    
+}
+
+.button-create button {
+    font-family: 'Raleway', sans-serif;
+    
+}
