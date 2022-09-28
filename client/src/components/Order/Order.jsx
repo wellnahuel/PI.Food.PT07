@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {sort, filterRecipesByDiets, order} from '../../actions';
-import { ASCENDENTE, DESCENDENTE,/*  HEALTH_UP, HEALTH_DOWN */} from "../../constantes/sort"
+import { ASCENDENTE, DESCENDENTE,/*  HEALTH_UP, HEALTH_DOWN */} from "../../constantes/sort";
+import '../Order/Order.css';
 
 export default function Order() {
   const [filter, setFilter] = useState('');
@@ -22,21 +23,21 @@ export default function Order() {
   }
 
     return (
-        <div>
+        <div className='order-container'>
           <span>Alphabetical:</span>
-          <select name="select" onChange={onSelectChangeSort}>
+          <select className='order-option' name="select" onChange={onSelectChangeSort}>
             <option value={ASCENDENTE}>ascendente</option>
             <option value={DESCENDENTE}>descendente</option>            
           </select> 
           
           <span>Health score:</span>
-          <select name="select" onChange={onSelectChangeOrder}>
+          <select className='order-option' name="select" onChange={onSelectChangeOrder}>
             <option value={ASCENDENTE}>ascendente</option>
             <option value={DESCENDENTE}>descendente</option>            
           </select>
 
           <span>Filter By Diet: </span>
-            <select className='filter-select' onChange={(e) => handleFilterDiets(e)}>
+            <select className='order-option' onChange={(e) => handleFilterDiets(e)}>
               <option default value=''>Select a Diet</option>
                 <option value='gluten free'>Gluten Free</option>
                 <option value='dairy free'>Ketogenic</option>
