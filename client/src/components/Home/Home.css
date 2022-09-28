@@ -1,0 +1,17 @@
+.recipes-external-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.recipes-external-container recipe{
+   text-align: center;
+}
+
+.recipe{
+    text-align: center;
+    text-decoration: none;
+   
+}

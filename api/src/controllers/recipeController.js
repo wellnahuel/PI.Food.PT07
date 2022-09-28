@@ -30,7 +30,7 @@ function getRecipes(req, res, next) {
 			})
 			.catch((err) => next(err));
 	} else {
-		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=25`)
+		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=50`)
 			.then((apiResponse) => {
 				apiRecipes = apiResponse.data.results;
 				return Recipe.findAll({ include: [Diet] });

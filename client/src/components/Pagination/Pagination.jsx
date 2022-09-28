@@ -8,8 +8,8 @@ const Pagination = ({ paginate, recipesPerPage, totalNumberOfRecipes}) => {
     for(let i =1 ; i <= totalDivNine; i++) {
         numberOfPage.push(i)
     }
-    return  <div className='pagination-main-container'>
-                    <nav className="pagination-nav">
+    return  <div>
+                    <nav>
                         <ul className='ul-pagination'>
                         {numberOfPage && numberOfPage.map(number => (                
                                 <li className='each-number' key={number} >

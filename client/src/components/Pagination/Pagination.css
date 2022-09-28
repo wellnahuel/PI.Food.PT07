@@ -1,12 +1,3 @@
-.pagination-main-container {
-    /* background-color: #30093a;
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    margin-bottom: 0.6rem;
-    font-weight: bold; */
-}
-
 .ul-pagination {
     list-style-type: none;  
     margin: 0px;
@@ -20,24 +11,8 @@
 .p-pagination{
     /* background-color: #30093a; */
     padding: 0 30px;
+    font-family: 'Raleway', sans-serif;
+
 
 }
 
-.pagination-nav {
-   /*  font-family: 'Raleway', sans-serif;
-    background-color: #30093a; */
-    
-}
-
-.pagination-nav ul {
-    /* background-color: #30093a;
-    color:#fff;
-    display: flex;
-    margin-left: 1rem;
-    padding: 1.5rem;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 40%;
-    list-style-type: none; */
-
-}
