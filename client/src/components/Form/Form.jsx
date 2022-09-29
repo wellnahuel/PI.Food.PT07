@@ -10,10 +10,13 @@ import {getDiets} from '../../actions/index.js'
 function validate(input) {
     let errors = {};
     if (!input.title) {
-      errors.name = "You must enter a valid name for your recipe";
+      errors.title = "You must enter a valid name for your recipe";
     }
     if (!input.resume) {
       errors.resume = "You must enter a valid resume for your recipe";
+    }
+    if (!input.instructions) {
+      errors.instructions = "You must enter a valid instructions for your recipe";
     }
     if ( parseInt(input.score) < 0 || parseInt(input.score) > 100) {
       errors.score = "The score must be a number between 0 and 100";
@@ -22,12 +25,14 @@ function validate(input) {
   }
 
 export default function Form() {
-  const diets = useSelector((state) => state.diets);
+  const allDiets = useSelector((state) => state.allDiets);
   const dispatch = useDispatch()    
 
   useEffect(() => {
 		dispatch(getDiets());
 	}, [dispatch]);
+
+  
 
   //const navigate = useNavigate()
   const [errors, setErrors] = useState({})
@@ -48,9 +53,10 @@ export default function Form() {
 
   function handleChange(e) {
     setInput({
-      ...setInput,
+      ...input,
       [e.target.name] : e.target.value
     })
+    console.log(errors)
     setErrors(validate({
       ...input,
       [e.target.name]: e.target.value
@@ -58,17 +64,18 @@ export default function Form() {
   }
 
   function handleCheck(e) {
+    console.log(input.diets)
     if(e.target.checked) {
       setInput({
         ...input,
-        diets: e.target.value
+        diets: [...input.diets, e.target.value]
       })
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(input);
+    //console.log(input);
     dispatch(postRecipe(input))
     alert('Recipe created')
     setInput({
@@ -80,6 +87,7 @@ export default function Form() {
     })
     //navigate('/recipes')
   }
+  
 
   
   
@@ -96,8 +104,8 @@ export default function Form() {
                 name='title'
                 onChange={(e) => handleChange(e)}
               />
-              {errors.name && (
-              <p className="error">{errors.name}</p>
+              {errors.title && (
+              <p className="error">{errors.title}</p>
               )}
               <label>Resume:</label>
               <textarea
@@ -106,6 +114,9 @@ export default function Form() {
                 name='resume'
                 onChange={(e) => handleChange(e)}
               /> 
+              {errors.resume && (
+              <p className="error">{errors.resume}</p>
+              )}
               <label>Score:</label>
               <input
                 type='text'
@@ -113,6 +124,9 @@ export default function Form() {
                 name='score'
                 onChange={(e) => handleChange(e)}
               />
+              {errors.score && (
+              <p className="error">{errors.score}</p>
+              )}
               <label>Instructions:</label>
               <textarea
                 type='text'
@@ -120,11 +134,14 @@ export default function Form() {
                 name='instructions'
                 onChange={(e) => handleChange(e)}
               />
+              {errors.instructios && (
+              <p className="error">{errors.instructions}</p>
+              )}
             </div>  
             <div className="form-rigth-div">
               <div className="form-list-diets">
-                {diets.length > 0 &&
-                    diets.map((diet) => (
+                {allDiets.length > 0 &&
+                    allDiets.map((diet) => (
                       <label
                         htmlFor={diet.id
                           .toLowerCase()
@@ -133,11 +150,9 @@ export default function Form() {
                       >
                         <input
                           key={diet.id}
-                          id={diet.id
-                            .toLowerCase()
-                            .replace(' ', '')
-                            .replace('-', '')}
+                          
                           type='checkbox'
+                          value = {diet.id}
                           name={diet.name
                             .toLowerCase()
                             .replace(' ', '')
@@ -148,7 +163,7 @@ export default function Form() {
                       </label>
                     ))}
               </div>
-            </div>
+             </div>
          
         
           </div>

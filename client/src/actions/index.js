@@ -82,7 +82,7 @@ const URL_LOCAL = 'http://localhost:3001';
 
     export function postRecipe(payload) {
       return async function () {
-        const response = await axios.post(`${URL_LOCAL}/recipes}`, payload);
+        const response = await axios.post(`${URL_LOCAL}/recipes`, payload);
         return response;
       }
     }
