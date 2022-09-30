@@ -39,6 +39,7 @@ export default function Order() {
           <span>Filter By Diet: </span>
             <select className='order-option' onChange={(e) => handleFilterDiets(e)}>
               <option default value=''>Select a Diet</option>
+                {}
                 <option value='gluten free'>Gluten Free</option>
                 <option value='dairy free'>Ketogenic</option>
                 <option value='lacto ovo vegetarian'>Vegetarian</option>

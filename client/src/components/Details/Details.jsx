@@ -26,26 +26,26 @@ export default function Details() {
 					recipe ?
 					<>		
 							<div>
-								<h1 className='detail-title'>{recipe.title}</h1>
+								<h1 className='detail-title'>{recipe.name}</h1>
 							</div>
 					<div className="detail-container">
 						<div className="div-left">
 							<div>
 								<img className="detail-image" src={recipe.image} alt='imagen'></img>
 							</div>
-							<div className="detail-typeofdish">
+							 {/* <div className="detail-typeofdish">
 								<h4>Type of dish: {recipe.dishTypes}</h4>
-							</div>
-							<div className="detail-diets">
+							</div>  */}
+							{/* <div className="detail-diets">
 								<h4>Belongs to the diets: {recipe.diets}</h4>
-							</div>
+							</div> */}
 							<div className="detail-healthscore">
-								<h4>HealthScore: {recipe.healthScore}</h4>
+								<h4>HealthScore: {recipe.score}</h4>
 							</div>
 						</div>
 						<div className="div-right">
 							<div className="detail-summary">
-								<p dangerouslySetInnerHTML={{__html: recipe.summary,}}/>
+								<p dangerouslySetInnerHTML={{__html: recipe.resume,}}/>
 							</div>
 							<div className="details-container-stepbystep">
 								<h3 className="details-stepbystep-title">Step by step:</h3>

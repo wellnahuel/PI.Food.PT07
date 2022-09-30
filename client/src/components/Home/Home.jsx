@@ -12,9 +12,9 @@ export default function Home() {
    // const [recipesToShow, setRecipesToShow] = useState();
     const [recipesPerPage, setRecipesPerPage] = useState(9)
     const indexOfLastRecipe = currentPage * recipesPerPage;
-    console.log(indexOfLastRecipe)
+    //console.log(indexOfLastRecipe)
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-    console.log(indexOfFirstRecipe)
+    //(indexOfFirstRecipe)
 
     function currentRecipesFrula(arr) {
       let cortado = [...arr]
@@ -27,7 +27,7 @@ export default function Home() {
       setCurrentPage(pageNumber)
     }
     const totalNumberOfRecipes = store.recipes.length
-    console.log(totalNumberOfRecipes)
+    //console.log(totalNumberOfRecipes)
     //let recipes = useSelector((state) => state.recipes)//recipes es una array
    // console.log(recipes)
     let dispatch = useDispatch()
@@ -35,7 +35,7 @@ export default function Home() {
         dispatch(fetchRecipes())
     }, [])
     useEffect(() => {
-      console.log(currentPage)
+     // console.log(currentPage)
      //console.log(store) 
     }, [store, currentPage])
    // console.log(recipes)  
@@ -49,7 +49,7 @@ export default function Home() {
               { store.RecipesByName?.length ?  currentRecipesFrula(store.RecipesByName).map((currentRecipes) => {
                   return (
                     <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
-                      <Recipe className='recipe-render' /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
+                      <Recipe className='recipe-render' key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
 
                     </Link>
                     )        
@@ -68,7 +68,7 @@ export default function Home() {
                 }): currentRecipesFrula(store.recipes).map((currentRecipes) => {        
                   return (
                     <Link to={`/recipes/${currentRecipes.id}`} className="recipe">
-                      <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} title={currentRecipes.title} image={currentRecipes.image} diets={currentRecipes.diets}/>
+                      <Recipe /* recipesOnScreen={currentRecipes} */ key={currentRecipes.id} name={currentRecipes.name} image={currentRecipes.image} diets={currentRecipes.diets}/>
                     </Link>               
                     ) 
                   })}

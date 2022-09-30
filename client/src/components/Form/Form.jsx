@@ -25,7 +25,8 @@ function validate(input) {
   }
 
 export default function Form() {
-  const allDiets = useSelector((state) => state.allDiets);
+  const allDietsToForm = useSelector((state) => state.allDiets);
+  console.log(allDietsToForm)
   const dispatch = useDispatch()    
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function Form() {
       ...input,
       [e.target.name] : e.target.value
     })
-    console.log(errors)
+   // console.log(errors)
     setErrors(validate({
       ...input,
       [e.target.name]: e.target.value
@@ -64,7 +65,7 @@ export default function Form() {
   }
 
   function handleCheck(e) {
-    console.log(input.diets)
+    //console.log(input.diets)
     if(e.target.checked) {
       setInput({
         ...input,
@@ -140,26 +141,25 @@ export default function Form() {
             </div>  
             <div className="form-rigth-div">
               <div className="form-list-diets">
-                {allDiets.length > 0 &&
-                    allDiets.map((diet) => (
+                {allDietsToForm.length > 0 &&
+                    allDietsToForm.map((diet) => (
                       <label
                         htmlFor={diet.id
                           .toLowerCase()
                           .replace(' ', '')
                           .replace('-', '')}
                       >
-                        <input
-                          key={diet.id}
-                          
-                          type='checkbox'
-                          value = {diet.id}
-                          name={diet.name
-                            .toLowerCase()
-                            .replace(' ', '')
-                            .replace('-', '')}
-                          onChange={handleCheck}
-                        />
-                        {diet.name}
+                      <input
+                        key={diet.id}                          
+                        type='checkbox'
+                        value = {diet.id}
+                        name={diet.name
+                          .toLowerCase()
+                          .replace(' ', '')
+                          .replace('-', '')}
+                        onChange={handleCheck}
+                      />
+                      {diet.name}
                       </label>
                     ))}
               </div>

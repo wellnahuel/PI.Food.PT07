@@ -1,3 +1,4 @@
+
 const { Recipe, Diet } = require('../db.js');
 const axios = require('axios');
 const { API_KEY } = process.env
@@ -18,24 +19,25 @@ function getRecipes(req, res, next) {
 				let dataNormalize = apiResponse.data.results.map(r => {
 					return {
 					name: r.title,
+					id: r.id,
 					image: r.image,
 					dishTypes: r.dishTypes,
 					diets: r.diets,
 					resume: r.summary,
-					score: r.spoonacularScore,
-					healthScore: r.healthScore,
+					//score: r.spoonacularScore,
+					score: r.healthScore,
 					instructions: r.instructions,
 					}
 				})
 
 				apiRecipes = dataNormalize.filter((recipe) => {
-					return recipe.title.toLowerCase().includes(ingredient);
+					return recipe.name.toLowerCase().includes(ingredient);
 				});
 				return Recipe.findAll({ include: [Diet] });
 			})
 			.then((dbResponse) => {
 				dbRecipes = dbResponse.filter((recipe) => {
-					return recipe.title.toLowerCase().includes(ingredient);
+					return recipe.name.toLowerCase().includes(ingredient);
 				});
 				return res.json(
 					[...dbRecipes, ...apiRecipes]
@@ -48,12 +50,13 @@ function getRecipes(req, res, next) {
 				let dataNormalize = apiResponse.data.results.map(r => {
 					return {
 					name: r.title,
+					id: r.id,
 					image: r.image,
 					dishTypes: r.dishTypes,
 					diets: r.diets,
 					resume: r.summary,
-					score: r.spoonacularScore,
-					healthScore: r.healthScore,
+					//score: r.spoonacularScore,
+					score: r.healthScore,
 					instructions: r.instructions,
 					}
 				})
@@ -74,7 +77,12 @@ function getRecipes(req, res, next) {
 function getRecipeById(req, res, next) {
 	const id = req.params.idRecipe;
 	if (id.includes('-')) { //si el id tiene un '-' es porque es UUID , ergo esta en la DB, magia de Lau 
-		Recipe.findByPk(id, { include: Diet }).then((resp) => {
+		Recipe.findOne({where: {id:id}, include: { 
+			model: Diet,
+			attributes: ["name", "id"],
+			through: { attributes: [] },
+		
+		}}).then((resp) => {
 			return res.json(resp);
 		});
 	} else { // si no esta en la DB me voy a buscar a la API (aca use tu magia Fran)
@@ -82,16 +90,21 @@ function getRecipeById(req, res, next) {
 		  .then((response) => {
 				return res.json({
 					name: response.data.title,
+					id: response.data.id,
 					image: response.data.image,
 					dishTypes: response.data.dishTypes,
 					diets: response.data.diets,
 					resume: response.data.summary,
-					score: response.data.spoonacularScore,
-					healthScore: response.data.healthScore,
-					instructions: response.data.instructions,
+					//score: response.data.spoonacularScore,
+					score: response.data.healthScore,
+					instructions: response.data.analyzedInstructions[0],
 				});
 			})
-			.catch((error) => next(error));
+			.catch((error) =>{
+				console.log(error, 'sot el err'),
+				next(error);
+				
+			} )
 	}
 }
 
@@ -100,14 +113,14 @@ function createRecipe(req, res, next) {
 	const { title, resume, image, score, instructions, diets } = req.body;
 	Recipe.create({        
 		name:title,
-		image: 'https://i.pinimg.com/736x/21/0c/d2/210cd204a6d7c6d1ff4692469831be5b--transparent-plates.jpg',
+		image:'https://spoonacular.com/application/frontend/images/articles/what-is-the-best-recipe-search-engine-in-the-world.png',
 		resume,
 		score: parseFloat(score),
 		instructions,
 		        
 	})
 		.then((recipeCreated) => {
-			console.log(diets)
+			//console.log(diets)
 			return recipeCreated.setDiets(diets) ;
 		})
 		.then(newRecipe => {
@@ -118,7 +131,7 @@ function createRecipe(req, res, next) {
 		
 		.catch((err) => {
 
-			console.log(err, 'sot el err'),
+			//console.log(err, 'sot el err'),
 			next(err)
 		})
 }

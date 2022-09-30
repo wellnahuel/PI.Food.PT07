@@ -27,7 +27,7 @@ const URL_LOCAL = 'http://localhost:3001';
                 })
             })
             .catch((err) => { //
-                console.log(err)
+                //console.log(err)
             })
         }
     } 
@@ -48,6 +48,7 @@ const URL_LOCAL = 'http://localhost:3001';
     }
 
     export function getRecipesById(id) {
+      console.log('id del getrecipesbyid', id)
         return (dispatch) => {
             axios.get(`${URL_LOCAL}/recipes/${id}`)
             .then((response) => {
@@ -73,7 +74,7 @@ const URL_LOCAL = 'http://localhost:3001';
     }
 
     export function filterRecipesByDiets(payload) {
-      console.log(payload)
+      //console.log(payload)
       return {
         type: FILTER_BY_DIETS,
         payload
