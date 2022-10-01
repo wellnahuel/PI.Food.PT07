@@ -11,7 +11,8 @@ const Pagination = ({ paginate, recipesPerPage, totalNumberOfRecipes}) => {
     return  <div>
                     <nav>
                         <ul className='ul-pagination'>
-                        {numberOfPage && numberOfPage.map(number => (                
+                        {numberOfPage && numberOfPage.map(number => 
+                            (                
                                 <li className='each-number' key={number} >
                                     <p className='p-pagination' onClick = {() => paginate(number)}>{number}</p>
                                 </li>                

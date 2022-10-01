@@ -20,13 +20,16 @@ function validate(input) {
     }
     if ( parseInt(input.score) < 0 || parseInt(input.score) > 100) {
       errors.score = "The score must be a number between 0 and 100";
-    }        
+    }  
+   /*  if (!input.dishTypes) {
+      errors.instructions = "You must enter a valid dish types for your recipe"; 
+    } */
     return errors;
   }
 
 export default function Form() {
   const allDietsToForm = useSelector((state) => state.allDiets);
-  console.log(allDietsToForm)
+  //console.log(allDietsToForm)
   const dispatch = useDispatch()    
 
   useEffect(() => {
@@ -46,6 +49,7 @@ export default function Form() {
     errors: {},
     score: 0,
     instructions: [],
+    /* dishTypes: [], */
     //image: "",
   });
     
@@ -86,7 +90,6 @@ export default function Form() {
       score: "",
       instructions: [],
     })
-    //navigate('/recipes')
   }
   
 
@@ -135,9 +138,19 @@ export default function Form() {
                 name='instructions'
                 onChange={(e) => handleChange(e)}
               />
-              {errors.instructios && (
+              {errors.instructions && (
               <p className="error">{errors.instructions}</p>
               )}
+             {/*  <label>Dish Types:</label>
+              <textarea
+                type='text'
+                value={input.dishTypes}
+                name='dishTypes'
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.dishTypes && (
+              <p className="error">{errors.dishTypes}</p>
+              )} */}
             </div>  
             <div className="form-rigth-div">
               <div className="form-list-diets">

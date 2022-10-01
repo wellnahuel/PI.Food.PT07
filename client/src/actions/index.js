@@ -6,46 +6,42 @@ export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
 export const GET_DIETS = 'GET_DIETS';
 export const ORDER_AZ = 'ORDER_AZ';
 export const ORDER_ZA = 'ORDER_ZA';
-//export const ORDER_SCORE_UP = 'ORDER_SCORE_UP';
-//export const ORDER_SCORE_DOWN = 'ORDER_SCORE_DOWN';
 export const ORDER_HEALTH_DOWN = 'ORDER_HEALTH_DOWN';
 export const ORDER_HEALTH_UP = 'ORDER_HEALTH_UP';
 export const SORT = 'SORT';
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 export const ORDER = 'ORDER';
 
-
 const URL_LOCAL = 'http://localhost:3001';
 
-    export function fetchRecipes() {
-        return function(dispatch) {
-            axios.get(`${URL_LOCAL}/recipes`)
-            .then((recipes) => { //pido las recetas a mi backend 
-                dispatch({
-                    type: GET_RECIPES, //dispacho ESTO
-                    payload: recipes.data //le puse el .data para sacarselo al reducer
-                })
-            })
-            .catch((err) => { //
-                //console.log(err)
-            })
-        }
-    } 
+export function fetchRecipes() {
+  return function(dispatch) {
+    axios.get(`${URL_LOCAL}/recipes`)
+    .then((recipes) => { //pido las recetas a mi backend 
+      dispatch({
+          type: GET_RECIPES, //dispacho ESTO
+          payload: recipes.data //le puse el .data para sacarselo al reducer
+      })
+    })
+    .catch((err) => {
+      })
+  }
+} 
 
-    export function searchRecipes(search) {
-        return function(dispatch) {
-            axios.get(`${URL_LOCAL}/recipes?name=${search}`) // QUE PASA ACA¿ CON QUERY=SEARCH NO ANDA, NO DEBERIA PASAR ESTO PORQUE YO LO DEFINI ASI EN EL BACK
-            .then((recipes) => { //pido las recetas a mi backend 
-                dispatch({
-                    type: GET_RECIPES_BY_NAME, //dispacho ESTO
-                    payload: recipes.data //le puse el .data para sacarselo al reducer
-                })
-            })
-            .catch((err) => { //
-                console.log(err)
-            })
-        }
-    }
+export function searchRecipes(search) {
+  return function(dispatch) {
+    axios.get(`${URL_LOCAL}/recipes?name=${search}`) // QUE PASA ACA¿ CON QUERY=SEARCH NO ANDA, NO DEBERIA PASAR ESTO PORQUE YO LO DEFINI ASI EN EL BACK
+    .then((recipes) => { //pido las recetas a mi backend 
+      dispatch({
+        type: GET_RECIPES_BY_NAME, //dispacho ESTO
+        payload: recipes.data //le puse el .data para sacarselo al reducer
+      })
+    })
+    .catch((err) => { //
+      console.log(err)
+    })
+  }
+}
 
     export function getRecipesById(id) {
       console.log('id del getrecipesbyid', id)
@@ -74,7 +70,7 @@ const URL_LOCAL = 'http://localhost:3001';
     }
 
     export function filterRecipesByDiets(payload) {
-      //console.log(payload)
+   
       return {
         type: FILTER_BY_DIETS,
         payload

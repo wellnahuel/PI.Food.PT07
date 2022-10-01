@@ -1,19 +1,12 @@
-
 const { Recipe, Diet } = require('../db.js');
 const axios = require('axios');
 const { API_KEY } = process.env
-const { URL_SPOONACULAR } = 'https://api.spoonacular.com/recipes/'
-
-//const hardcoreDataApi = require('./100recipes.json');
-
-
 
 function getRecipes(req, res, next) {
 	const ingredient = req.query.name;
 	var apiRecipes = [];
 	var dbRecipes = [];
-	//return res.json(hardcoreDataApi.results)
-	 if (ingredient) {
+	if (ingredient) {
 		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${ingredient}&number=100`)
 			.then((apiResponse) => {
 				let dataNormalize = apiResponse.data.results.map(r => {
@@ -21,10 +14,9 @@ function getRecipes(req, res, next) {
 					name: r.title,
 					id: r.id,
 					image: r.image,
-					dishTypes: r.dishTypes,
+					//dishTypes: r.dishTypes,
 					diets: r.diets,
 					resume: r.summary,
-					//score: r.spoonacularScore,
 					score: r.healthScore,
 					instructions: r.instructions,
 					}
@@ -52,10 +44,9 @@ function getRecipes(req, res, next) {
 					name: r.title,
 					id: r.id,
 					image: r.image,
-					dishTypes: r.dishTypes,
+					//dishTypes: r.dishTypes,
 					diets: r.diets,
 					resume: r.summary,
-					//score: r.spoonacularScore,
 					score: r.healthScore,
 					instructions: r.instructions,
 					}
@@ -83,16 +74,20 @@ function getRecipeById(req, res, next) {
 			through: { attributes: [] },
 		
 		}}).then((resp) => {
+			console.log('console de resp',resp)
 			return res.json(resp);
+		})
+		.catch((error) =>{
+			next(error);				
 		});
-	} else { // si no esta en la DB me voy a buscar a la API (aca use tu magia Fran)
+	} else {
 		axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`)
 		  .then((response) => {
 				return res.json({
 					name: response.data.title,
 					id: response.data.id,
 					image: response.data.image,
-					dishTypes: response.data.dishTypes,
+					//dishTypes: response.data.dishTypes,
 					diets: response.data.diets,
 					resume: response.data.summary,
 					//score: response.data.spoonacularScore,
@@ -101,13 +96,11 @@ function getRecipeById(req, res, next) {
 				});
 			})
 			.catch((error) =>{
-				console.log(error, 'sot el err'),
-				next(error);
-				
-			} )
+				next(error);				
+				} 
+			)
+		}
 	}
-}
-
 
 function createRecipe(req, res, next) {
 	const { title, resume, image, score, instructions, diets } = req.body;
@@ -117,7 +110,7 @@ function createRecipe(req, res, next) {
 		resume,
 		score: parseFloat(score),
 		instructions,
-		        
+				        
 	})
 		.then((recipeCreated) => {
 			//console.log(diets)

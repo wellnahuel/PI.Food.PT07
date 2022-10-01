@@ -25,10 +25,11 @@ module.exports = (sequelize) => {
     },
     score: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     instructions: {
       type: DataTypes.TEXT
-    }
+    },
   });
 };
 
