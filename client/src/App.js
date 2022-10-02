@@ -1,3 +1,4 @@
+import '../src/normalize.css';
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
@@ -9,14 +10,9 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import Form from './components/Form/Form.jsx';
 import About from './components/About/About.jsx';
 import Order from './components/Order/Order.jsx';
-//import Recipe from './components/Recipe';
-import Diets from './components/Diets/Diets'
-
 
 import { Switch } from 'react-router'
 import Pagination from './components/Pagination/Pagination';
-
-
 
 function App() {
   return (
@@ -38,14 +34,10 @@ function App() {
         </Route>
         <Route exact path='/create'>
           <Form />
-        </Route>
-        <Route exact path='/diets'>
-          <Diets />
-        </Route>
+        </Route>       
         <Route exact path='/about'>
           <About />
         </Route>
-
       </Switch>
     </React.Fragment>
 

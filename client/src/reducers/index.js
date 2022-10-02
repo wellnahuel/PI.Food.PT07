@@ -1,16 +1,13 @@
-import { GET_RECIPES, GET_RECIPES_BY_NAME, GET_RECIPE_BY_ID, SORT, GET_DIETS, FILTER_BY_DIETS, ORDER } from '../actions';
+import { GET_RECIPES, GET_RECIPES_BY_NAME, SORT, GET_DIETS, FILTER_BY_DIETS, ORDER } from '../actions';
 import { ASCENDENTE } from "../constants/sort"
 
 const initialState = {
 	recipes: [],
 	RecipesByName: [],
-	recipeById: {},
-	allDiets: [],
-	diets: [],
+	allDiets: [],	
 	orderedRecipes: [],
 	filteredRecipes: [],
-	flag: "All",
-}
+	}
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
@@ -18,21 +15,15 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				recipes: action.payload,
-				//filteredRecipes: action.payload,
-				//orderedRecipes: action.payload
+				recipesToShow: action.payload
 			}
+
 		case GET_RECIPES_BY_NAME:
 			return {
 				...state,
-				RecipesByName: action.payload
+				RecipesByName: action.payload,
+				recipesToShow: action.payload,
 			}
-
-		case GET_RECIPE_BY_ID: {
-			return {
-				...state,
-				recipeById: action.payload,
-			};
-		}
 
 		case SORT:
 			let orderedRec = [...state.recipes]
@@ -49,7 +40,9 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				orderedRecipes: [...orderedRec],
-				RecipesByName: []
+				RecipesByName: [],
+				recipesToShow: [...orderedRec],
+
 			}
 
 		case ORDER:
@@ -68,7 +61,9 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				orderedRecipes: [...orderedRecScore],
-				RecipesByName: []
+				RecipesByName: [],
+				recipesToShow: [...orderedRecScore],
+
 			}
 
 		case GET_DIETS:
@@ -86,7 +81,9 @@ export default function reducer(state = initialState, action) {
 				...state,
 				filteredRecipes: recipesFiltered,
 				RecipesByName: [],
-				orderedRecipes: []
+				orderedRecipes: [],
+				recipesToShow: recipesFiltered,
+
 			}
 		}
 

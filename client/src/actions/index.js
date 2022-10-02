@@ -37,20 +37,10 @@ export function searchRecipes(search) {
           payload: recipes.data //le puse el .data para sacarselo al reducer
         })
       })
-      .catch((err) => { 
+      .catch((err) => {
         console.log(err)
       })
   }
-}
-
-export function getRecipesById(id) {
-  console.log('id del getrecipesbyid', id)
-  return (dispatch) => {
-    axios.get(`${URL_LOCAL}/recipes/${id}`)
-      .then((response) => {
-        dispatch({ type: GET_RECIPE_BY_ID, payload: response.data });
-      });
-  };
 }
 
 export function sort(order) {
