@@ -20,13 +20,13 @@ export default function Landing() {
                     <div className='info-and-button'>
                         <Link to='/recipes'>
                             <button className='button-get-in'>Get in</button>
-                        </Link>    
+                        </Link>
                     </div>
                 </div>
                 <div className='landing-image'>
                     <img src={landingImage} alt='landingImage' />
                 </div>
-            </div> 
+            </div>
         </React.Fragment>
 
 

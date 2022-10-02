@@ -1,12 +1,5 @@
-import {
-	GET_RECIPES, GET_RECIPES_BY_NAME, GET_RECIPE_BY_ID, SORT, GET_DIETS, FILTER_BY_DIETS, ORDER/* ORDER_HEALTH_DOWN, ORDER_HEALTH_UP */
-} from '../actions';
-
-/* const ASCENDENTE = 'ascendente';
-const LOW = 'ascendente'; */
-import { ASCENDENTE, /* DESCENDENTE */ } from "../constantes/sort"
-
-
+import { GET_RECIPES, GET_RECIPES_BY_NAME, GET_RECIPE_BY_ID, SORT, GET_DIETS, FILTER_BY_DIETS, ORDER } from '../actions';
+import { ASCENDENTE } from "../constants/sort"
 
 const initialState = {
 	recipes: [],
@@ -64,10 +57,10 @@ export default function reducer(state = initialState, action) {
 			let orderedRecScore = [...state.recipes]
 
 			orderedRecScore = orderedRecScore.sort((a, b) => {
-				if (a.healthScore < b.healthScore) {
+				if (a.score < b.score) {
 					return action.payload === ASCENDENTE ? -1 : 1;
 				}
-				if (a.healthScore > b.healthScore) {
+				if (a.score > b.score) {
 					return action.payload === ASCENDENTE ? 1 : -1;
 				}
 				return 0;
@@ -76,8 +69,6 @@ export default function reducer(state = initialState, action) {
 				...state,
 				orderedRecipes: [...orderedRecScore],
 				RecipesByName: []
-
-
 			}
 
 		case GET_DIETS:
@@ -86,21 +77,16 @@ export default function reducer(state = initialState, action) {
 				allDiets: action.payload,
 			};
 
-
 		case FILTER_BY_DIETS: {
-
 			const allRecipes = state.recipes
-
 			const recipesFiltered = action.payload === '' ? allRecipes : allRecipes.filter(
 				element => element.diets.includes(action.payload)
 			)
-			/* (element => element.allDiets === action.payload) */
 			return {
 				...state,
 				filteredRecipes: recipesFiltered,
 				RecipesByName: [],
 				orderedRecipes: []
-
 			}
 		}
 

@@ -126,22 +126,16 @@ export default function Form() {
               {allDietsToForm.length > 0 &&
                 allDietsToForm.map((diet) => (
                   <label
-                    htmlFor={diet.id
-                      .toLowerCase()
-                      .replace(' ', '')
-                      .replace('-', '')}
+                    htmlFor={diet.id}
                   >
                     <input
                       key={diet.id}
                       type='checkbox'
                       value={diet.id}
-                      name={diet.name
-                        .toLowerCase()
-                        .replace(' ', '')
-                        .replace('-', '')}
+                      name={diet.name}
                       onChange={handleCheck}
                     />
-                    {diet.name}
+                  {diet.name}
                   </label>
                 ))}
             </div>

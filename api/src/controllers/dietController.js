@@ -51,7 +51,6 @@ function fillDiets() {
 }
 
 function getDiets(req, res) {
-	console.log('hola entre agetdiets')
 	Diet.findAll() //chequeo en la db si hay dietas guardadas
 		.then((response) => {
 			return res.send(response)

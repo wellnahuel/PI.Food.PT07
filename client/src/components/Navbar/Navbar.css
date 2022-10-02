@@ -8,11 +8,10 @@
 	align-items: center;
 	height: 10vh;
 	font-weight: bolder;
-
 }
 
 .nav-left {
-    font-family: 'Raleway', cursive;
+	font-family: 'Raleway', cursive;
 	margin-left: 3rem;
 	font-size: 2rem;
 }
@@ -23,13 +22,13 @@
 }
 
 .list-item {
-    font-family: 'Raleway', cursive;
-    list-style-type: none;
-    text-decoration: none;
+	font-family: 'Raleway', cursive;
+	list-style-type: none;
+	text-decoration: none;
 	padding-right: 10px;
 }
 
 .list-item a {
 	list-style-type: none;
-    text-decoration: none;
-} 
+	text-decoration: none;
+}

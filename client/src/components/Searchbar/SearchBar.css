@@ -1,25 +1,23 @@
-.searchbar{
-    padding-left: 450px;
-    background-color: #30093a;
-
-    /* ver si hay una mejor manera de alinearlo en el centro, align items? ver eso luego */
+.searchbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #30093a;
 }
 
 .input-search {
-    padding: 0 0.5rem;
-    height: 5.5vh;
+	padding: 0 0.5rem;
+	height: 5.5vh;
 	width: 15vw;
 	border-radius: 10px;
-    border-color: #30093a;
-    font-family: 'Raleway', sans-serif;
-    border-width: 1px;
+	border-color: #30093a;
+	font-family: 'Raleway', sans-serif;
+	border-width: 1px;
 	font-weight: bold;
-
-
 }
 
 .button-search {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	background-color: #b68fd4;
 	border-radius: 10px;
 	cursor: pointer;
@@ -27,7 +25,7 @@
 	width: 8vw;
 	height: 6vh;
 	margin-left: 1rem;
-    border-width: 1px;
+	border-width: 1px;
 }
 
 .button-search:hover {

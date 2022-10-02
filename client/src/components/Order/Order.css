@@ -1,4 +1,4 @@
-.order-container{
+.order-container {
     padding-top: 10px;
     padding-left: 150px;
     font-family: 'Raleway', sans-serif;
@@ -9,11 +9,10 @@
 .order-option {
     padding: 0 0.5rem;
     height: 5.5vh;
-	width: 15vw;
-	border-radius: 10px;
+    width: 15vw;
+    border-radius: 10px;
     border-color: #30093a;
     font-family: 'Raleway', sans-serif;
     border-width: 1px;
-    font-weight: bold;    
+    font-weight: bold;
 }
-
