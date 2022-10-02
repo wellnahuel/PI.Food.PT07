@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway:wght@100&display=swap');
 
-
 .navbar {
 	background-color: #ffffffff;
 	display: flex;
@@ -8,6 +7,8 @@
 	justify-content: space-between;
 	align-items: center;
 	height: 10vh;
+	font-weight: bolder;
+
 }
 
 .nav-left {
@@ -26,7 +27,6 @@
     list-style-type: none;
     text-decoration: none;
 	padding-right: 10px;
-
 }
 
 .list-item a {

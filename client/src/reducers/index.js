@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
 				RecipesByName: action.payload
 			}
 
-			case GET_RECIPE_BY_ID: {
+		case GET_RECIPE_BY_ID: {
 			return {
 				...state,
 				recipeById: action.payload,
@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
 		case SORT:
 			let orderedRec = [...state.recipes]
 
-			orderedRec = orderedRec.sort((a,b) => {
+			orderedRec = orderedRec.sort((a, b) => {
 				if (a.name < b.name) {
 					return action.payload === ASCENDENTE ? -1 : 1;
 				}
@@ -59,11 +59,11 @@ export default function reducer(state = initialState, action) {
 				RecipesByName: []
 			}
 
-		case ORDER: 
+		case ORDER:
 
 			let orderedRecScore = [...state.recipes]
 
-			orderedRecScore = orderedRecScore.sort((a,b) => {
+			orderedRecScore = orderedRecScore.sort((a, b) => {
 				if (a.healthScore < b.healthScore) {
 					return action.payload === ASCENDENTE ? -1 : 1;
 				}
@@ -78,19 +78,19 @@ export default function reducer(state = initialState, action) {
 				RecipesByName: []
 
 
-			}	
+			}
 
-		case GET_DIETS: 
+		case GET_DIETS:
 			return {
 				...state,
 				allDiets: action.payload,
 			};
-			
+
 
 		case FILTER_BY_DIETS: {
 
 			const allRecipes = state.recipes
-			
+
 			const recipesFiltered = action.payload === '' ? allRecipes : allRecipes.filter(
 				element => element.diets.includes(action.payload)
 			)
@@ -101,14 +101,14 @@ export default function reducer(state = initialState, action) {
 				RecipesByName: [],
 				orderedRecipes: []
 
-			} 
-		}	
+			}
+		}
 
 		case 'POST_RECIPE':
 			return {
 				...state
 			}
-			
+
 		default:
 			return state
 	}

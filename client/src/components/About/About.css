@@ -1,11 +1,11 @@
 .about-background-container {
-    display: flex;
+	display: flex;
 	justify-content: center;
 	min-height: 90vh;
 }
 
 .about-main-container {
-    border-radius: 1rem;
+	border-radius: 1rem;
 	width: 50vw;
 	height: 70vh;
 	margin-top: 2.5rem;
@@ -20,7 +20,7 @@
 .about-main-container h1 {
 	font-family: 'Raleway', sans-serif;
 	margin: 0px;
-    color: #30093a;
+	color: #30093a;
 }
 
 .about-info {
@@ -31,26 +31,29 @@
 .about-info p {
 	font-family: 'Raleway', sans-serif;
 	text-align: justify;
-	color: #30093a
+	color: #30093a;
+	font-weight: bolder;
 }
 
 .about-info-image {
 	width: 15vw;
 	margin-left: 1rem;
+	border-radius: 5px;
 }
 
 .about-contact {
-    margin: 0px;
-    font-family: 'Raleway', sans-serif;
-    color: #30093a
+	margin: 0px;
+	font-family: 'Raleway', sans-serif;
+	color: #30093a
 }
 
 .about-contact p {
-    margin: 0px
+	margin: 0px;
+	font-weight: bolder;
 }
 
 .about-contact h2 {
-    margin:0px
+	margin: 0px
 }
 
 .about-contact a img {
@@ -58,6 +61,5 @@
 }
 
 .about-contact-icons {
-    text-align: center;
-
+	text-align: center;
 }

@@ -37,7 +37,7 @@ function getRecipes(req, res, next) {
 			})
 			.catch((err) => next(err));
 	} else {
-		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=50`)
+		axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
 			.then((apiResponse) => {
 				let dataNormalize = apiResponse.data.results.map(r => {
 					return {
@@ -58,7 +58,7 @@ function getRecipes(req, res, next) {
 				return res.json([...dbResponse, ...apiRecipes]);
 							})
 			.catch((error) => next(error));
-	} 
+		} 
 
 }
 

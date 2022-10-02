@@ -6,12 +6,11 @@
     padding-top: 10px;
 }
 
-.recipes-external-container recipe{
-   text-align: center;
+.recipes-external-container recipe {
+    text-align: center;
 }
 
-.recipe{
+.recipe {
     text-align: center;
     text-decoration: none;
-   
 }

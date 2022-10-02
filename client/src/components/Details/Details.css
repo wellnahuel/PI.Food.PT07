@@ -1,7 +1,7 @@
 .details-main-container {
     display: flex;
-	flex-direction: column;
-	align-items: center;
+    flex-direction: column;
+    align-items: center;
     background-color: #30093a;
     color: #fff;
     font-family: 'Raleway', sans-serif;
@@ -9,7 +9,7 @@
 
 .detail-container {
     display: flex;
-	padding: 0 2rem;
+    padding: 0 2rem;
 }
 
 .detail-title {
@@ -20,9 +20,9 @@
     margin: 0 2rem;
 }
 
-.div-left img { 
-    max-width:  40vw;
-	margin-top: 1.5rem;
+.div-left img {
+    max-width: 40vw;
+    margin-top: 1.5rem;
 }
 
 .detail-image {
@@ -34,10 +34,10 @@
 
 .div-right {
     margin: 1.5rem 2rem;
-    
+
 }
 
-.detail-summary{
+.detail-summary {
     background-color: #fff;
     color: #30093a;
     font-weight: bold;
@@ -48,7 +48,7 @@
 }
 
 .detail-summary p {
-    margin:1px;
+    margin: 1px;
     box-shadow: rgb(0 0 0 / 25%) 0px 12px 8px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;

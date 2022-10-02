@@ -1,4 +1,4 @@
-import { getDiets } from "../../actions";
+/* import { getDiets } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react'
 
@@ -15,4 +15,4 @@ export default function Diets() {
         soy las dietas
     </div>
 
-}
+} */

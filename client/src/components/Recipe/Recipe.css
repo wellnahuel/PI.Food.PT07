@@ -1,9 +1,9 @@
 .recipe-title{
     font-family: 'Raleway', sans-serif;
-
 }
 
 .recipe-card {
     font-family: 'Raleway', sans-serif;
-
+    border:  4mm outset #30093a;
+    border-radius: 5px;
 }
