@@ -17,10 +17,10 @@ const URL_LOCAL = 'http://localhost:3001';
 export function fetchRecipes() {
   return function (dispatch) {
     axios.get(`${URL_LOCAL}/recipes`)
-      .then((recipes) => { //pido las recetas a mi backend 
+      .then((recipes) => { 
         dispatch({
-          type: GET_RECIPES, //dispacho ESTO
-          payload: recipes.data //le puse el .data para sacarselo al reducer
+          type: GET_RECIPES, 
+          payload: recipes.data
         })
       })
       .catch((err) => {
@@ -30,11 +30,11 @@ export function fetchRecipes() {
 
 export function searchRecipes(search) {
   return function (dispatch) {
-    axios.get(`${URL_LOCAL}/recipes?name=${search}`) // QUE PASA ACA¿ CON QUERY=SEARCH NO ANDA, NO DEBERIA PASAR ESTO PORQUE YO LO DEFINI ASI EN EL BACK
-      .then((recipes) => { //pido las recetas a mi backend 
+    axios.get(`${URL_LOCAL}/recipes?name=${search}`) 
+      .then((recipes) => { 
         dispatch({
-          type: GET_RECIPES_BY_NAME, //dispacho ESTO
-          payload: recipes.data //le puse el .data para sacarselo al reducer
+          type: GET_RECIPES_BY_NAME, 
+          payload: recipes.data 
         })
       })
       .catch((err) => {

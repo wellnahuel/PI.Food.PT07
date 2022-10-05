@@ -1,5 +1,5 @@
 const { Recipe, Diet } = require('../db.js');
-const axios = require('axios'); 
+const axios = require('axios');
 let listOfDiets = [
 	{
 		name: 'Gluten Free',
@@ -35,14 +35,14 @@ let listOfDiets = [
 
 
 function fillDiets() {
-	Diet.findAll() //chequeo en la db si hay dietas guardadas
-		.then((response) => { //devuelve una promesa, el findAll a su vez devuelve un array
-			if (!response.length) { //como es un array reviso la longitud 
-				Diet.bulkCreate(listOfDiets) //si en la db no hay nada muestro la lista de todos los tipos de dieta
+	Diet.findAll() 
+		.then((response) => { 
+			if (!response.length) { 
+				Diet.bulkCreate(listOfDiets) 
 					.then((response) => {
 						return response;
 					})
-					.catch(error => console.log(error)); //si hay algo en la db lo muestro
+					.catch(error => console.log(error)); 
 			} else {
 				return response;
 			}
@@ -51,7 +51,7 @@ function fillDiets() {
 }
 
 function getDiets(req, res) {
-	Diet.findAll() //chequeo en la db si hay dietas guardadas
+	Diet.findAll() 
 		.then((response) => {
 			return res.send(response)
 		})

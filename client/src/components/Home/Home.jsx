@@ -22,7 +22,6 @@ export default function Home() {
     setCurrentPage(pageNumber)
   }
   const totalNumberOfRecipes = store.recipesToShow?.length
-  console.log('console del totalnumberofrecipes', totalNumberOfRecipes)
 
   let dispatch = useDispatch()
   useEffect(() => {

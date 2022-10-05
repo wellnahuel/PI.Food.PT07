@@ -6,7 +6,6 @@
 	color: #fff;
 	min-height: 100vh;
 	font-family: 'Raleway', sans-serif;
-
 }
 
 .form-main-div {
@@ -31,6 +30,8 @@
 	width: 20vw;
 	border-radius: 10px;
 	margin-bottom: 1rem;
+	font-weight: bolder;
+
 }
 
 .form-left-div textarea {
@@ -39,6 +40,8 @@
 	width: 20vw;
 	border-radius: 5px;
 	margin-bottom: 1rem;
+	font-weight: bolder;
+
 }
 
 .form-list-diets {

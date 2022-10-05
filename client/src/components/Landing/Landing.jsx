@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import landingImage from '../../../src/images/food-1898194_1280.jpg';
 
-
 export default function Landing() {
     return (
         <React.Fragment>
@@ -28,7 +27,5 @@ export default function Landing() {
                 </div>
             </div>
         </React.Fragment>
-
-
     )
 }

@@ -34,10 +34,10 @@ const { Recipe, Diet } = sequelize.models;
 
 // Relaciones ==>
 Recipe.belongsToMany(Diet, {
-  through:'recipe_diet'
+  through: 'recipe_diet'
 })
 Diet.belongsToMany(Recipe, {
-  through:'recipe_diet'
+  through: 'recipe_diet'
 })  //resulta ser la tabla intermedia
 
 
