@@ -19,6 +19,10 @@ export default function reducer(state = initialState, action) {
 				recipesToShow: action.payload
 			}
 
+			
+
+
+
 		case GET_RECIPES_BY_NAME:
 			return {
 				...state,
