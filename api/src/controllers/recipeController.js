@@ -28,7 +28,7 @@ function getRecipes(req, res, next) {
 			})
 			.then((dbResponse) => {
 				dbRecipes = dbResponse.filter((recipe) => {
-					return recipe.name.toLowerCase().includes(ingredient);
+					return recipe.name/* .toLowerCase().includes(ingredient) */;
 				});
 				return res.json(
 					[...dbRecipes, ...apiRecipes]

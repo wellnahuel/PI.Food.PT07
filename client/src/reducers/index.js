@@ -3,6 +3,7 @@ import { ASCENDENTE } from "../constants/sort"
 
 const initialState = {
 	recipes: [],
+	recipesToShow: [],
 	RecipesByName: [],
 	allDiets: [],	
 	orderedRecipes: [],
@@ -26,7 +27,7 @@ export default function reducer(state = initialState, action) {
 			}
 
 		case SORT:
-			let orderedRec = [...state.recipes]
+			let orderedRec = [...state.recipesToShow]
 
 			orderedRec = orderedRec.sort((a, b) => {
 				if (a.name < b.name) {
@@ -47,7 +48,7 @@ export default function reducer(state = initialState, action) {
 
 		case ORDER:
 
-			let orderedRecScore = [...state.recipes]
+			let orderedRecScore = [...state.recipesToShow]
 
 			orderedRecScore = orderedRecScore.sort((a, b) => {
 				if (a.score < b.score) {

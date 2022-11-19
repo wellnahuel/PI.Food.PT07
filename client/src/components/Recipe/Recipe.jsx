@@ -10,7 +10,7 @@ export default function Recipe({ name, image, diets }) {
     }
 
     return (
-        <div className='recipe-card'>
+        <div className='recipe-card animate__animated animate__fadeInUp '>
             <img className='recipe-image' src={image} alt='imagen' />
             <h3 className='recipe-title'>{name}</h3>
             <h6 className='recipe-diets'>Belongs to the diets: {'  ' + dietString(diets) + '  '}</h6>

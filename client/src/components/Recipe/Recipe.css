@@ -1,9 +1,12 @@
-.recipe-title{
+.recipe-title {
     font-family: 'Raleway', sans-serif;
 }
 
 .recipe-card {
+    box-shadow: 16px 17px 46px 7px rgba(117, 5, 209, 0.19);
+    -webkit-box-shadow: 16px 17px 46px 7px rgba(117, 5, 209, 0.19);
+    -moz-box-shadow: 16px 17px 46px 7px rgba(117, 5, 209, 0.19);
     font-family: 'Raleway', sans-serif;
-    border:  4mm outset #30093a;
+    border: 4mm outset #30093a;
     border-radius: 5px;
 }

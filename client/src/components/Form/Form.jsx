@@ -135,7 +135,7 @@ export default function Form() {
                       name={diet.name}
                       onChange={handleCheck}
                     />
-                  {diet.name}
+                    {diet.name}
                   </label>
                 ))}
             </div>
