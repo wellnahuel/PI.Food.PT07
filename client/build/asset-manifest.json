@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e2a8fded.chunk.css",
+    "main.js": "/static/js/main.bfcaadab.chunk.js",
+    "main.js.map": "/static/js/main.bfcaadab.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0a9e9d62.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0a9e9d62.js.map",
+    "static/js/2.7f92807a.chunk.js": "/static/js/2.7f92807a.chunk.js",
+    "static/js/2.7f92807a.chunk.js.map": "/static/js/2.7f92807a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.e2a8fded.chunk.css.map": "/static/css/main.e2a8fded.chunk.css.map",
+    "static/js/2.7f92807a.chunk.js.LICENSE.txt": "/static/js/2.7f92807a.chunk.js.LICENSE.txt",
+    "static/media/food-1898194_1280.0b7b5bdf.jpg": "/static/media/food-1898194_1280.0b7b5bdf.jpg",
+    "static/media/icon_github.e0c5c595.png": "/static/media/icon_github.e0c5c595.png",
+    "static/media/icon_linkedin.95be28d8.png": "/static/media/icon_linkedin.95be28d8.png",
+    "static/media/kiddo_cooking.5b4f828e.jpg": "/static/media/kiddo_cooking.5b4f828e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a9e9d62.js",
+    "static/js/2.7f92807a.chunk.js",
+    "static/css/main.e2a8fded.chunk.css",
+    "static/js/main.bfcaadab.chunk.js"
+  ]
+}
