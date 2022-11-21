@@ -12,7 +12,7 @@ export const SORT = 'SORT';
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 export const ORDER = 'ORDER';
 
-const URL_LOCAL = 'http://localhost:3001';
+const URL_LOCAL = 'https://pi-food-dqzf.onrender.com';
 
 
 
