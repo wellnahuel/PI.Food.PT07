@@ -15,10 +15,10 @@ export default function About() {
                         <h2>Contact Me</h2>
                         <p>My name is Nahuel Cittadino. You can find me on LinkedIn and GitHub.</p>
                         <div className='about-contact-icons'>
-                            <a href='https://www.linkedin.com/in/nahuel-cittadino-b386331b2/' target="_blank">
+                            <a href='https://www.linkedin.com/in/nahuel-cittadino-b386331b2/' target="_blank" rel="noreferrer">
                                 <img src={linkedin} alt='Linkedin' />
                             </a>
-                            <a href='https://github.com/wellnahuel/' target="_blank">
+                            <a href='https://github.com/wellnahuel/' target="_blank" rel="noreferrer">
                                 <img src={github} alt='Github' />
                             </a>
                         </div>
