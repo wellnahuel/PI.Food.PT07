@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME';
 export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
@@ -13,9 +12,6 @@ export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 export const ORDER = 'ORDER';
 
 const URL_LOCAL = 'https://pi-food-dqzf.onrender.com';
-
-
-
 
 export function fetchRecipes() {
   return function (dispatch) {

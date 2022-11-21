@@ -8,7 +8,7 @@ export default function Details() {
 	let { id } = useParams()
 
 	useEffect(() => {
-		axios.get('http://localhost:3001/recipes/' + id)
+		axios.get('https://pi-food-dqzf.onrender.com/recipes/' + id)
 			.then((response) => {
 				setRecipe(response.data)
 			})
