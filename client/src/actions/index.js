@@ -23,11 +23,10 @@ export function fetchRecipes() {
         })
       })
       .catch((err) => {
+        console.log(err)
       })
   }
 }
-
-
 
 export function searchRecipes(search) {
   return function (dispatch) {
