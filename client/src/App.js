@@ -29,7 +29,7 @@ function App() {
           <Pagination />
           <Home />
         </Route>
-        <Route exact path='/recipes/id'>
+        <Route exact path='/recipes/:id'>
           <Details />
         </Route>
         <Route exact path='/create'>
