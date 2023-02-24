@@ -4,16 +4,24 @@
 	background-color: #ffffffff;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	/* 	justify-content: space-between; */
 	align-items: center;
-	height: 10vh;
+	width: 100%;
 	font-weight: bolder;
+}
+
+.nav-right {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+	margin-right: 11vw;
 }
 
 .nav-left {
 	font-family: 'Raleway', cursive;
-	margin-left: 3rem;
+	margin-left: 11vw;
 	font-size: 2rem;
+	width: 100%;
 }
 
 .nav-left a {
@@ -25,10 +33,62 @@
 	font-family: 'Raleway', cursive;
 	list-style-type: none;
 	text-decoration: none;
-	padding-right: 10px;
+
 }
 
 .list-item a {
 	list-style-type: none;
 	text-decoration: none;
+
+}
+
+
+
+@media screen and (max-width: 700px) {
+
+	.navbar {
+		display: grid;
+		padding-left: 12%;
+		justify-content: center;
+		align-items: center;
+		width: 100vw;
+	}
+
+	.nav-right {
+		margin: 0;
+		display: grid;
+		text-align: center;
+		justify-items: center;
+		width: 100%;
+
+	}
+
+	.nav-left {
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+		margin-left: 0;
+	}
+
+	.nav-right {
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+
+	}
+
+	.list {
+		padding: 0px;
+		margin-right: 0px;
+	}
+
+	.list-item {
+		padding: 0px;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	.list-item {
+		font-size: 4vw;
+	}
 }
