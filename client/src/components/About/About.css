@@ -1,13 +1,13 @@
 .about-background-container {
 	display: flex;
 	justify-content: center;
-	min-height: 90vh;
+	min-height: 100vh;
 }
 
 .about-main-container {
 	border-radius: 1rem;
 	width: 50vw;
-	height: 70vh;
+	height: 80vh;
 	margin-top: 2.5rem;
 	display: flex;
 	flex-direction: column;
@@ -19,7 +19,7 @@
 
 .about-main-container h1 {
 	font-family: 'Raleway', sans-serif;
-	margin: 0px;
+	margin: 0;
 	color: #30093a;
 }
 
@@ -33,9 +33,11 @@
 	text-align: justify;
 	color: #30093a;
 	font-weight: bolder;
+	font-size: 16px;
 }
 
 .about-info-image {
+	padding-right: 5%;
 	width: 15vw;
 	margin-left: 1rem;
 	border-radius: 5px;
@@ -50,10 +52,14 @@
 .about-contact p {
 	margin: 0px;
 	font-weight: bolder;
+	font-size: 16px;
+
 }
 
 .about-contact h2 {
-	margin: 0px
+	margin: 2% 0 2% 0;
+	display: flex;
+	align-items: center;
 }
 
 .about-contact a img {
@@ -62,4 +68,57 @@
 
 .about-contact-icons {
 	text-align: center;
+}
+
+
+@media screen and (max-width: 1180px) {
+	.about-main-container {
+		height: 70vh;
+	}
+
+	.about-contact h2 {
+		font-size: 20px;
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 800px) {
+
+	.about-main-container {
+		height: 90%;
+		min-width: 200px;
+	}
+
+
+	.about-info {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.about-info-image {
+		min-width: 200px;
+	}
+
+
+	.about-main-container h1 {
+		font-size: 24px
+	}
+
+	.about-info p {
+		font-size: 14px;
+	}
+
+	.about-contact h2 {
+		font-size: 20px;
+		justify-content: center;
+	}
+
+	.about-contact p {
+		font-size: 14px;
+	}
+
+	.about-contact a img {
+		width: 10%;
+		padding: 0 10% 0 10%
+	}
 }
