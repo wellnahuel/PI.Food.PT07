@@ -15,22 +15,21 @@
 .form-left-div {
 	display: flex;
 	flex-direction: column;
-	margin-right: 5%;
+	margin: 0 5% 0 5%;
 }
 
 .form-rigth-div {
 	display: flex;
 	flex-direction: column;
 	min-width: 200px;
+	margin: 0 5% 0 5%;
 
 }
-
-
 
 .form-left-div input {
 	padding: 0 0.5rem;
 	height: 6vh;
-	width: 40vw;
+	width: 60vw;
 	border-radius: 10px;
 	margin-bottom: 1rem;
 	font-weight: bolder;
@@ -43,11 +42,10 @@
 .form-left-div textarea {
 	padding: 1rem 0.5rem;
 	height: 8vh;
-	width: 40vw;
+	width: 60vw;
 	border-radius: 5px;
 	margin-bottom: 1rem;
 	font-weight: bolder;
-
 }
 
 .form-list-diets {
@@ -55,9 +53,19 @@
 	flex-direction: column;
 }
 
+.form-list-diets label {
+	padding: 5% 1% 5% 0;
+	margin-right: 2%;
+
+}
+
 .button-create {
 	top: 2rem;
 	width: 100%;
+	padding: 3% 0 0 5%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .button-create button {
@@ -66,7 +74,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 }
 
 @media screen and (max-width: 600px) {
@@ -78,4 +85,17 @@
 		width: 100vw;
 	}
 
+	.form-left-div textarea {
+		width: 65vw
+	}
+
+	.form-left-div input {
+		width: 65vw
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.form-title {
+		font-size: 25px;
+	}
 }
