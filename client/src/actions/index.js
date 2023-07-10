@@ -11,7 +11,7 @@ export const SORT = 'SORT';
 export const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 export const ORDER = 'ORDER';
 
-const URL_LOCAL = 'https://pi-food-dqzf.onrender.com';
+const URL_LOCAL = 'https://pi-foodback.onrender.com';
 
 export function fetchRecipes() {
   return function (dispatch) {
