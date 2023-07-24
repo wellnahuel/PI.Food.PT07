@@ -5,7 +5,7 @@ import { fetchRecipes } from '../../actions';
 import Recipe from '../Recipe/Recipe';
 import Pagination from '../Pagination/Pagination';
 import '../Home/Home.css'
-import { Loading }   from "../Loading/Loading";
+import { Loading } from "../Loading/Loading";
 
 
 //kshdfbjsdhgvbshdjgbsdjgbfdjfhgvbd
