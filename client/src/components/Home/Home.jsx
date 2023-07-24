@@ -34,7 +34,7 @@ export default function Home() {
   useEffect(() => {
   }, [store, currentPage])
 
-  if(store.recipesToShow?.length === 0 && store.recipes?.length === 0 ) {
+  if(store.recipesToShow.length === 0 ) {
     return <Loading />
   }
 
