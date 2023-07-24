@@ -5,6 +5,8 @@ import { fetchRecipes } from '../../actions';
 import Recipe from '../Recipe/Recipe';
 import Pagination from '../Pagination/Pagination';
 import '../Home/Home.css'
+import  Loading  from "..Loading/Loading";
+
 
 //kshdfbjsdhgvbshdjgbsdjgbfdjfhgvbd
 
@@ -31,6 +33,10 @@ export default function Home() {
   }, [])
   useEffect(() => {
   }, [store, currentPage])
+
+  if(store.recipesToShow?.length === 0 && store.recipes?.length === 0 ) {
+    return <Loading />
+  }
 
   return <div className='pagination-external-container'>
     <div >
